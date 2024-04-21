@@ -4,40 +4,24 @@ import {
   ViewChild,
   TemplateRef,
 } from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours,
-} from 'date-fns';
+import { startOfDay, endOfDay, isSameDay, isSameMonth } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
   CalendarEventAction,
-  CalendarEventTimesChangedEvent,
   CalendarView,
 } from 'angular-calendar';
-import { EventColor } from 'calendar-utils';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { OCCASION_KEY } from 'src/app/constant/localstorage-key';
+import { CalendarLocalstorageService } from 'src/app/service/localstorage.service';
 
-const colors: any = {
-  red: {
-    primary: '#ad2121',
-    secondary: '#FAE3E3',
-  },
-  blue: {
-    primary: '#1e90ff',
-    secondary: '#D1E8FF',
-  },
-  yellow: {
-    primary: '#e3bc08',
-    secondary: '#FDF1BA',
-  },
-};
+interface CustomCalendarEvent extends CalendarEvent<any> {
+  host: string;
+  member: string;
+  location: string;
+  content: string;
+}
 
 @Component({
   selector: 'app-page',
@@ -47,14 +31,21 @@ const colors: any = {
 })
 export class PageComponent {
   @ViewChild('modalContent', { static: true }) modalContent!: TemplateRef<any>;
-
+  idGenarate = 1;
+  startDate = startOfDay(new Date());
+  endDate = endOfDay(new Date());
   visible: boolean = false;
+  events: CalendarEvent[] = [];
+  dialogEdit: boolean = false;
+  edit: any;
+  occasionForm!: FormGroup;
+  occasionEdit!: FormGroup;
 
   view: CalendarView = CalendarView.Month;
   CalendarView = CalendarView;
   viewDate: Date = new Date();
   refresh: Subject<any> = new Subject();
-  activeDayIsOpen: boolean = true;
+  activeDayIsOpen!: boolean;
   modalData!: {
     action: string;
     event: CalendarEvent;
@@ -72,124 +63,132 @@ export class PageComponent {
       label: '<i class="fas fa-fw fa-trash-alt"></i>',
       a11yLabel: 'Delete',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        this.deleteEvent(event);
       },
     },
   ];
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  constructor(
+    private modal: NgbModal,
+    private form: FormBuilder,
+    private calendarLocalstorage: CalendarLocalstorageService
+  ) {}
 
-  constructor(private modal: NgbModal) {}
+  ngOnInit() {
+    this.initFormGroups();
+    this.loadDataFromLocalstorage();
+  }
+
+  initFormGroups() {
+    this.occasionForm = this.form.group(this.getFormControlsConfig());
+    this.occasionEdit = this.form.group(this.getFormControlsConfig());
+  }
+
+  getFormControlsConfig() {
+    return {
+      title: ['', Validators.required],
+      start: [new Date()],
+      end: [new Date()],
+      host: ['', Validators.required],
+      member: ['', Validators.required],
+      location: ['', Validators.required],
+      content: ['', Validators.required],
+    };
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    console.log('dayclicked');
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-      }
-      this.viewDate = date;
+    if (!isSameMonth(date, this.viewDate) || events.length === 0) {
+      this.activeDayIsOpen = false;
+      this.visible = !this.activeDayIsOpen;
+    } else {
+      this.activeDayIsOpen = !this.activeDayIsOpen;
+    }
+    this.edit = events;
+    this.viewDate = date;
+  }
+
+  handleEvent(action: string, event: CalendarEvent) {
+    if (action === 'Edited') {
+      this.dialogEdit = true;
+    } else if (action === 'Clicked') {
+      this.modalData = { action, event };
+      this.modal.open(this.modalContent, { size: 'lg' });
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    console.log('eventTimesChanged');
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
-  }
-
-  handleEvent(action: string, event: CalendarEvent): void {
-    console.log('handleEvent');
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
   addEvent(): void {
-    console.log('addEvent');
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
+    this.visible = true;
+    const occasionLocalStorage =
+      this.calendarLocalstorage.getItem(OCCASION_KEY) || [];
+    const occasion = this.occasionForm.value;
+    const startDate = occasion.start;
+    const endDate = occasion.end;
+    if (
+      !isSameDay(startDate, this.startDate) ||
+      !isSameDay(endDate, this.endDate)
+    ) {
+      occasion.start = new Date(startDate);
+      occasion.end = new Date(endDate);
+    } else if (!isSameDay(startDate, this.startDate)) {
+      occasion.start = new Date(startDate);
+    } else if (!isSameDay(endDate, this.endDate)) {
+      occasion.end = new Date(endDate);
+    }
+    occasion.id = occasionLocalStorage.length + 1;
+    occasionLocalStorage.push(occasion);
+    this.calendarLocalstorage.saveItem(OCCASION_KEY, occasionLocalStorage);
+    this.visible = false;
+    this.loadDataFromLocalstorage();
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+  editEvent(event: CustomCalendarEvent[]) {
+    this.dialogEdit = true;
+    const eventEditIndex = this.events.findIndex(
+      (events: any) => events.id === event[0].id
+    );
+    if (eventEditIndex !== -1) {
+      const existingEvent = event[0];
+      const newEventData = this.occasionEdit.value;
+      const updateEvent = {
+        ...existingEvent,
+        title: newEventData.title || existingEvent.title,
+        start: newEventData.start || existingEvent.start,
+        end: newEventData.end || existingEvent.end,
+        host: newEventData.host || existingEvent.host,
+        member: newEventData.member || existingEvent.member,
+        location: newEventData.location || existingEvent.location,
+        content: newEventData.content || existingEvent.content,
+      };
+      this.events[eventEditIndex] = updateEvent;
+      this.calendarLocalstorage.saveItem(OCCASION_KEY, this.events);
+      this.loadDataFromLocalstorage();
+      this.dialogEdit = false;
+    }
+  }
+
+  loadDataFromLocalstorage() {
+    const storedEvents = this.calendarLocalstorage.getItem(OCCASION_KEY);
+    if (storedEvents) {
+      this.events = storedEvents.map((event: any) => ({
+        ...event,
+        start: new Date(event.start),
+        end: new Date(event.end),
+        actions: this.actions,
+      }));
+    }
+  }
+
+  deleteEvent(event: CalendarEvent) {
+    this.events = this.events.filter((events) => events !== event);
+    this.calendarLocalstorage.saveItem(OCCASION_KEY, this.events);
+    this.activeDayIsOpen = false;
   }
 
   setView(view: CalendarView) {
-    console.log('setView');
     this.view = view;
   }
 
   closeOpenMonthViewDay() {
-    console.log('closeOpenMonthViewDay');
     this.activeDayIsOpen = false;
   }
 }
