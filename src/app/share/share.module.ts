@@ -8,6 +8,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { DialogModule } from 'primeng/dialog';
+import { TabViewModule } from 'primeng/tabview';
+import { PaginatorModule } from 'primeng/paginator';
 @NgModule({
   declarations: [],
   imports: [
@@ -19,9 +21,9 @@ import { DialogModule } from 'primeng/dialog';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    TabViewModule,
     DialogModule,
-    // TabViewModule,
-    // DropdownModule,
+    PaginatorModule,
   ],
   exports: [
     FormsModule,
@@ -29,7 +31,9 @@ import { DialogModule } from 'primeng/dialog';
     CalendarModule,
     NgbModalModule,
     FlatpickrModule,
+    TabViewModule,
     DialogModule,
+    PaginatorModule,
   ],
 })
 export class ShareModule {}

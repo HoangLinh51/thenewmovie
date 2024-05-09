@@ -1,0 +1,32 @@
+<div class="main">
+  <h3>Hello user {{accountInfo.username}}</h3>
+  <div>
+    <button (click)="getMovieList('movie', 'now_playing',1)">Movie</button>
+    <button (click)="getMovieList('tv','airing_today',1)">TV</button>
+  </div>
+
+  <div class="movie">
+    <div>
+      <input type="text" [(ngModel)]="keyword" placeholder="Enter keyword">
+      <button (click)="search()">Search</button>
+    </div>
+    <div class="product" *ngIf="!isSearching">
+      <div class="card" *ngFor="let listMovies of listMovie">
+        <img src="../../../assets/432997984_872655221541943_8415155365709088498_n.jpg" alt="">
+        <h5>{{listMovies.original_title}} {{listMovies.original_name}}</h5>
+        <p>Language: {{listMovies.original_language}}</p>
+        <p>Vote Rate: {{listMovies.vote_average | number: '1.2-2'}}</p>
+
+      </div>
+      <p-paginator [rows]="20" [totalRecords]="totalpage" (onPageChange)="onPageChange($event)"></p-paginator>
+    </div>
+    <div *ngIf="isSearching && listMovie.length > 0">
+      <h2>Search Results</h2>
+      <ul>
+        <li *ngFor="let movie of listMovie">
+          {{movie.original_title}} {{movie.original_name}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

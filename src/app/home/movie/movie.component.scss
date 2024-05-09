@@ -1,0 +1,23 @@
+.main {
+
+  width: 100%;
+
+  .product {
+    margin: 20px;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    img{
+      border-radius: 15px;
+    }
+    .card {
+      width: 23%;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #3e3e3e;
+    }
+  }
+}
