@@ -8,8 +8,13 @@ import { MovieService } from 'src/app/service/movie.service';
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
+
+  url = 'https://image.tmdb.org/t/p/original'
   accountInfo: any;
-  listMovie: any;
+  listNowPlaying: any
+  listMoviePopular: any;
+  listMovieTopRated: any;
+  listMovieUpcoming: any;
   listMovieSearch: any;
   isSearching: boolean = false;
 
@@ -17,20 +22,12 @@ export class MovieComponent {
   currentPage: number = 0;
   keyword = '';
   category: string = 'movie';
-  classify: string = 'now_playing';
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
     this.getAccount();
-    this.getMovieList(this.category, this.classify, 1);
-  }
-
-  onPageChange(event: PaginatorState) {
-    if (event.page !== undefined) {
-      this.currentPage = event.page + 1;
-      this.getMovieList(this.category, this.classify, this.currentPage);
-    }
+    this.getMovieList();
   }
 
   getAccount() {
@@ -45,15 +42,43 @@ export class MovieComponent {
     );
   }
 
-  getMovieList(category: string, movieList: string, page: number) {
+  getMovieList() {
+    this.getMovieListNowPlaying('movie', 'now_playing', 1)
+    this.getMovieListPopular('movie', 'popular', 1)
+    this.getMovieListTopRated('movie', 'top_rated', 1)
+    this.getMovieListUpcoming('movie', 'upcoming', 1)
+  }
+
+  getMovieListNowPlaying(category: string, movieList: string, page: number) {
     this.movieService
       .getListMovie(category, movieList, page)
       .subscribe((list) => {
         console.log('list', list);
-        this.classify = movieList;
-        this.category = category;
-        this.totalpage = list.total_pages;
-        this.listMovie = list.results;
+        this.listNowPlaying = list.results;
+      });
+  }
+  getMovieListPopular(category: string, movieList: string, page: number) {
+    this.movieService
+      .getListMovie(category, movieList, page)
+      .subscribe((list) => {
+        console.log('list', list);
+        this.listMoviePopular = list.results;
+      });
+  }
+  getMovieListTopRated(category: string, movieList: string, page: number) {
+    this.movieService
+      .getListMovie(category, movieList, page)
+      .subscribe((list) => {
+        console.log('list', list);
+        this.listMovieTopRated = list.results;
+      });
+  }
+  getMovieListUpcoming(category: string, movieList: string, page: number) {
+    this.movieService
+      .getListMovie(category, movieList, page)
+      .subscribe((list) => {
+        console.log('list', list);
+        this.listMovieUpcoming = list.results;
       });
   }
 
@@ -63,7 +88,7 @@ export class MovieComponent {
       this.movieService
         .searchMovies(this.category, this.keyword)
         .subscribe((data) => {
-          this.listMovie = data.results;
+          this.listMovieSearch = data.results;
           console.log(data.results);
         });
     } else if (this.keyword.trim() === '') {

@@ -1,23 +1,32 @@
-.main {
+.container-movie{
+  max-width: 1440px;
+  margin: auto;
+.list {
+  margin: 20px;
+  font-family: 'Arial, sans-serif';
 
-  width: 100%;
-
-  .product {
-    margin: 20px;
-    gap: 20px;
+  .movie-list {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
 
-    img{
-      border-radius: 15px;
-    }
-    .card {
-      width: 23%;
-      border-radius: 15px;
-      display: flex;
-      flex-direction: column;
-      border: 1px solid #3e3e3e;
+    .movie-card {
+      flex: 0 0 auto;
+      width: 180px;
+      text-align: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      p {
+        margin-top: 5px;
+        font-size: 16px;
+      }
     }
   }
+}
 }

@@ -11,4 +11,4 @@ import { MovieComponent } from './movie/movie.component';
   declarations: [PageComponent, MovieComponent],
   imports: [CommonModule, HomeRoutingModule, ShareModule, CalendarModule],
 })
-export class HomeModule {}
+export class HomeModule { }
