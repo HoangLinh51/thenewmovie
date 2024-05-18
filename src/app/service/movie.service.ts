@@ -73,4 +73,26 @@ export class MovieService {
         })
       );
   }
+
+  getMovieById(id:string) {
+    const optionsGet = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA'
+      }
+    };
+    return this.http
+      .get<any>(
+        this.apiUrl + '/3/movie/' + id,
+        optionsGet
+      )
+      .pipe(
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error:', error);
+          throw error;
+        })
+      );
+  }
 }

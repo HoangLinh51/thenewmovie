@@ -53,7 +53,6 @@ export class MovieComponent {
     this.movieService
       .getListMovie(category, movieList, page)
       .subscribe((list) => {
-        console.log('list', list);
         this.listNowPlaying = list.results;
       });
   }
@@ -61,7 +60,6 @@ export class MovieComponent {
     this.movieService
       .getListMovie(category, movieList, page)
       .subscribe((list) => {
-        console.log('list', list);
         this.listMoviePopular = list.results;
       });
   }
@@ -69,7 +67,6 @@ export class MovieComponent {
     this.movieService
       .getListMovie(category, movieList, page)
       .subscribe((list) => {
-        console.log('list', list);
         this.listMovieTopRated = list.results;
       });
   }
@@ -77,7 +74,6 @@ export class MovieComponent {
     this.movieService
       .getListMovie(category, movieList, page)
       .subscribe((list) => {
-        console.log('list', list);
         this.listMovieUpcoming = list.results;
       });
   }

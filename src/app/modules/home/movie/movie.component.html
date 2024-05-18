@@ -36,7 +36,7 @@
   <div class="list">
     <h2>Now Playing</h2>
     <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of listNowPlaying">
+      <div class="movie-card" *ngFor="let movie of listNowPlaying" [routerLink]="['/detail/', movie.id]">
         <img [src]="url+ movie.poster_path" alt="{{movie.title}}">
         <p>{{movie.title}}</p>
       </div>
