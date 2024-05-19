@@ -1,72 +1,26 @@
-<!-- <div class="main">
-  <h3>Hello user {{accountInfo.username}}</h3>
-  <div>
-    <button (click)="getMovieList('movie', 'now_playing',1)">Movie</button>
-    <button (click)="getMovieList('tv','airing_today',1)">TV</button>
-  </div>
-
-  <div class="movie">
-    <div>
-      <input type="text" [(ngModel)]="keyword" placeholder="Enter keyword">
-      <button (click)="search()">Search</button>
-    </div>
-    <div class="product" *ngIf="!isSearching">
-      <div class="card" *ngFor="let listMovies of listMovie">
-        <img src="../../../assets/432997984_872655221541943_8415155365709088498_n.jpg" alt="">
-        <h5>{{listMovies.original_title}} {{listMovies.original_name}}</h5>
-        <p>Language: {{listMovies.original_language}}</p>
-        <p>Vote Rate: {{listMovies.vote_average | number: '1.2-2'}}</p>
-
-      </div>
-      <p-paginator [rows]="20" [totalRecords]="totalpage" (onPageChange)="onPageChange($event)"></p-paginator>
-    </div>
-    <div *ngIf="isSearching && listMovie.length > 0">
-      <h2>Search Results</h2>
-      <ul>
-        <li *ngFor="let movie of listMovie">
-          {{movie.original_title}} {{movie.original_name}}
-        </li>
-      </ul>
-    </div>
-  </div>
-</div> -->
-
-
-<div class="container-movie">
-  <div class="list">
-    <h2>Now Playing</h2>
-    <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of listNowPlaying" [routerLink]="['/detail/', movie.id]">
-        <img [src]="url+ movie.poster_path" alt="{{movie.title}}">
-        <p>{{movie.title}}</p>
+<div class="movie-detail-container">
+  <!-- <div class="backdrop-container"*ngFor="let listMovies of listMovie" >
+    <img class="movie-backdrop" loading="lazy" [src]="imgUrl + listMovies.poster_path" alt="Movie Backdrop">
+    <div class="movie-title-container">
+      <h1 class="movie-title">{{ listMovies.original_title }}</h1>
+      <div class="movie-actions">
+        <button mat-button color="primary">Watch</button>
+        <button mat-button color="accent">Detail</button>
+        <button mat-icon-button>
+        </button>
       </div>
     </div>
+  </div> -->
+  <div class="component">
+    <app-list [listMovie]="listNowPlaying" [list]='"Now Playing"'></app-list>
   </div>
-  <div class="list">
-    <h2>Popular</h2>
-    <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of listMoviePopular">
-        <img [src]="url+ movie.poster_path" alt="{{movie.title}}">
-        <p>{{movie.title}}</p>
-      </div>
-    </div>
+  <div class="component">
+    <app-list [listMovie]="listPopular" [list]='"Popular"'></app-list>
   </div>
-  <div class="list">
-    <h2>Top Rated</h2>
-    <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of listMovieTopRated">
-        <img [src]="url+ movie.poster_path" alt="{{movie.title}}">
-        <p>{{movie.title}}</p>
-      </div>
-    </div>
+  <div class="component">
+    <app-list [listMovie]="listTopRated" [list]='"Top Rated"'></app-list>
   </div>
-  <div class="list">
-    <h2>Upcoming</h2>
-    <div class="movie-list">
-      <div class="movie-card" *ngFor="let movie of listMovieUpcoming">
-        <img [src]="url+ movie.poster_path" alt="{{movie.title}}">
-        <p>{{movie.title}}</p>
-      </div>
-    </div>
+  <div class="component">
+    <app-list [listMovie]="listUpcoming" [list]='"Upcoming"'></app-list>
   </div>
 </div>

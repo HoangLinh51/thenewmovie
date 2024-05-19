@@ -1,32 +1,7 @@
-.container-movie{
-  max-width: 1440px;
+.movie-detail-container {
+  padding: 30px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
   margin: auto;
-.list {
-  margin: 20px;
-  font-family: 'Arial, sans-serif';
 
-  .movie-list {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    padding-bottom: 10px;
-
-    .movie-card {
-      flex: 0 0 auto;
-      width: 180px;
-      text-align: center;
-
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-      }
-
-      p {
-        margin-top: 5px;
-        font-size: 16px;
-      }
-    }
-  }
-}
 }
