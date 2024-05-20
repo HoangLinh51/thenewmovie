@@ -1,11 +1,11 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-tv-list',
+  templateUrl: './tv-list.component.html',
+  styleUrls: ['./tv-list.component.scss']
 })
-export class ListComponent {
+export class TvListComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() listMovie:any
   @Input() list!: string

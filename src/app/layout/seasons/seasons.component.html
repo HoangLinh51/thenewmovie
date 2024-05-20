@@ -1,0 +1,15 @@
+<div class="seasons-list">
+  <div class="seasons-item">
+    <img [src]="imgUrl + seasons.poster_path" alt="{{ seasons.name }}" class="seasons-poster" />
+    <div class="seasons-details">
+      <h2 class="seasons-title">{{ seasons.name }}</h2>
+      <p class="seasons-info">
+        Movie Rate: {{ seasons.vote_average }} 
+      </p>   
+      <p class="seasons-info">
+        Air date: {{ seasons.air_date }}
+      </p>
+      <p class="seasons-genres"> Episode count: {{ seasons.episode_count }}</p>
+    </div>
+  </div>
+</div>

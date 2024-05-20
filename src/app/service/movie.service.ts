@@ -29,7 +29,7 @@ export class MovieService {
       );
   }
 
-  getListMovie(category: string, movieList: string, page: number) {
+  getList(category: string, list: string, page: number) {
     const optionsGet = {
       method: 'GET',
       headers: {
@@ -39,7 +39,7 @@ export class MovieService {
     };
     return this.http
       .get<any>(
-        this.apiUrl + '/3/' + category + '/' + movieList,
+        this.apiUrl + '/3/' + category + '/' + list,
         optionsGet
       )
       .pipe(
@@ -94,7 +94,7 @@ export class MovieService {
       );
   }
 
-  getDetail(id: string) {
+  getDetail(id: string, category: string) {
     const options = {
       method: 'GET',
       headers: {
@@ -103,7 +103,7 @@ export class MovieService {
           'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA',
       },
     };
-    return this.http.get<any>(this.apiUrl + '/3/movie/' + id, options).pipe(
+    return this.http.get<any>(this.apiUrl + '/3/' + category + '/' + id, options).pipe(
       map((response) => response),
       catchError((error) => {
         console.error('Error:', error);
@@ -112,7 +112,7 @@ export class MovieService {
     );
   }
 
-  getMovieComponent(id: string) {
+  getMovieComponent(id: string, category: string) {
     const options = {
       method: 'GET',
       headers: {
@@ -122,7 +122,7 @@ export class MovieService {
       },
     };
     const similarMovies$ = this.http
-      .get<any>(`${this.apiUrl}/3/movie/${id}/similar`, options)
+      .get<any>(`${this.apiUrl}/3/${category}/${id}/similar`, options)
       .pipe(
         map((response) => response),
         catchError((error) => {
@@ -132,7 +132,7 @@ export class MovieService {
       );
 
     const reviews$ = this.http
-      .get<any>(`${this.apiUrl}/3/movie/${id}/reviews`, options)
+      .get<any>(`${this.apiUrl}/3/${category}/${id}/reviews`, options)
       .pipe(
         map((response) => response),
         catchError((error) => {

@@ -1,3 +1,10 @@
+<div class="vertical-nav">
+  <a href="#" class="nav-item active"><i class="pi pi-home"></i></a>
+  <a href="#" class="nav-item"><i class="pi pi-search"></i> </a>
+  <a href="#" class="nav-item"><i class="pi pi-play-circle"></i> </a>
+  <a href="#" class="nav-item"><i class="pi pi-bookmark"></i> </a>
+  <a href="#" class="nav-item"><i class="pi pi-cog"></i> </a>
+</div>
 <div class="movie-detail-container">
   <!-- <div class="backdrop-container"*ngFor="let listMovies of listMovie" >
     <img class="movie-backdrop" loading="lazy" [src]="imgUrl + listMovies.poster_path" alt="Movie Backdrop">
@@ -12,15 +19,48 @@
     </div>
   </div> -->
   <div class="component">
-    <app-list [listMovie]="listNowPlaying" [list]='"Now Playing"'></app-list>
+    <app-movie-list
+      [listMovie]="movieNowPlaying"
+      [list]="'Now Playing Movie'"
+    ></app-movie-list>
   </div>
   <div class="component">
-    <app-list [listMovie]="listPopular" [list]='"Popular"'></app-list>
+    <app-movie-list
+      [listMovie]="moviePopular"
+      [list]="'Popular Movie'"
+    ></app-movie-list>
   </div>
   <div class="component">
-    <app-list [listMovie]="listTopRated" [list]='"Top Rated"'></app-list>
+    <app-movie-list
+      [listMovie]="movieTopRated"
+      [list]="'Top Rated Movie'"
+    ></app-movie-list>
   </div>
   <div class="component">
-    <app-list [listMovie]="listUpcoming" [list]='"Upcoming"'></app-list>
+    <app-movie-list
+      [listMovie]="movieUpcoming"
+      [list]="'Upcoming Movie'"
+    ></app-movie-list>
+  </div>
+  <div class="component">
+    <app-tv-list
+      [listMovie]="tvAiringToday"
+      [list]="'TV programs airing today'"
+    ></app-tv-list>
+  </div>
+  <div class="component">
+    <app-tv-list
+      [listMovie]="tvOnTheAir"
+      [list]="'Currently Airing on Tv'"
+    ></app-tv-list>
+  </div>
+  <div class="component">
+    <app-tv-list [listMovie]="tvPopular" [list]="'Trending TV'"></app-tv-list>
+  </div>
+  <div class="component">
+    <app-tv-list
+      [listMovie]="tvTopRated"
+      [list]="'Highest Rated TV Shows'"
+    ></app-tv-list>
   </div>
 </div>

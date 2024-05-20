@@ -26,7 +26,34 @@
   <div class="movie-info">
     <p-tabView>
       <p-tabPanel header="Overview">
-        <app-overview [detail]="detail"></app-overview>
+        <p>
+          {{ detail.overview }}
+        </p>
+        <div class="extra-details">
+          <p><strong>First air date:</strong> {{ detail.first_air_date }}</p>
+          <p><strong>Last air date:</strong> {{ detail.last_air_date }}</p>
+          <p>
+            <strong>Genre:</strong
+            ><label *ngFor="let genre of detail.genres"> {{ genre.name }},</label>
+          </p>
+          <p>
+            <strong>Spoken Languages:</strong>
+            <label *ngFor="let languages of detail.spoken_languages">{{
+              languages.english_name
+            }}</label>
+          </p>
+          <p><strong>Production Companies:</strong></p>
+          <ul *ngFor="let companies of detail.production_companies">
+            <li>{{ companies.name }}</li>
+          </ul>
+          <p>
+            <strong>Production Countries:</strong>
+            <label *ngFor="let countries of detail.production_countries">{{
+              countries.name
+            }}</label>
+          </p>
+          <p><strong>Tag Line:</strong>{{ detail.tagline }}</p>
+        </div>
       </p-tabPanel>
       <p-tabPanel header="Casts">
         <p>
@@ -42,9 +69,17 @@
           </div>
         </div>
       </p-tabPanel>
+      <p-tabPanel header="Seasion">
+        <div class="seasons">
+          <div  *ngFor="let seasons of detail.seasons">
+            <app-seasons [seasons]="seasons" 
+            [imgUrl]="imgUrl"></app-seasons>
+          </div>
+        </div>
+      </p-tabPanel>
       <p-tabPanel header="Similar">
         <app-similiar
-          [similarMovies]="similarMovies"
+          [similarMovies]="similiar"
           [imgUrl]="imgUrl"
         ></app-similiar>
       </p-tabPanel>

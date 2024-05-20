@@ -7,10 +7,11 @@ import { MovieComponent } from './movie/movie.component';
 import { PageComponent } from './page/page.component';
 
 import { CalendarModule } from 'primeng/calendar';
-import { ListComponent } from './movie/list/list.component';
+import { TvListComponent } from './movie/tv-list/tv-list.component';
+import { MovieListComponent } from './movie/movie-list/movie-list.component';
 
 @NgModule({
-  declarations: [PageComponent, MovieComponent, ListComponent],
+  declarations: [PageComponent, MovieComponent, TvListComponent, MovieListComponent],
   imports: [CommonModule, HomeRoutingModule, ShareModule, CalendarModule],
 })
 export class HomeModule { }

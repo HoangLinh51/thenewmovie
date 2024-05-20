@@ -3,13 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
-  selector: 'app-page',
-  templateUrl: './page.component.html',
-  styleUrls: ['./page.component.scss'],
+  selector: 'app-movie',
+  templateUrl: './movie.component.html',
+  styleUrls: ['./movie.component.scss']
 })
-export class PageComponent {
+export class MovieComponent {
   detail: any;
-  similarMovies: any;
   reviews: any;
   id: string = '';
   similiar: any;
@@ -34,7 +33,7 @@ export class PageComponent {
   }
 
   getDetail(id: string) {
-    this.movieService.getDetail(id).subscribe(
+    this.movieService.getDetail(id, 'movie').subscribe(
       (data) => {
         this.detail = data;
         console.log('data', data);
@@ -46,11 +45,9 @@ export class PageComponent {
   }
 
   getMovieSimiliar(id: string) {
-    this.movieService.getMovieComponent(id).subscribe((data) => {
-      this.similarMovies = data.similarMovies;
+    this.movieService.getMovieComponent(id, 'movie').subscribe((data) => {
+      this.similiar = data.similarMovies;
       this.reviews = data.reviews;
-      console.log('Similar Movies:', this.similarMovies);
-      console.log('Reviews:', this.reviews);
     });
   }
 }

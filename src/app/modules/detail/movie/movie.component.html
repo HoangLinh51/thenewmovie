@@ -1,0 +1,79 @@
+<div class="movie-detail-container">
+  <div class="movie-banner">
+    <img
+      [src]="imgUrl + detail.backdrop_path"
+      alt="Ghostbusters: Frozen"
+      class="banner-image"
+    />
+    <div class="movie-poster">
+      <img
+        [src]="imgUrl + detail.poster_path"
+        alt="Ghostbusters: Frozen"
+        class="poster-image"
+      />
+      <div class="rating">
+        <span>{{ detail.vote_average }}</span>
+      </div>
+      <div class="title">
+        <h3>{{ detail.title }}</h3>
+        <div class="actions">
+          <button class="watch-btn">watch</button>
+          <button class="trailer-btn">trailer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="movie-info">
+    <p-tabView>
+      <p-tabPanel header="Overview">
+        <p>
+          {{ detail.overview }}
+        </p>
+        <div class="extra-details">
+          <p><strong>Release:</strong> {{ detail.release_date }}</p>
+          <p>
+            <strong>Genre:</strong
+            ><label *ngFor="let genre of detail.genres">{{ genre.name }}</label>
+          </p>
+          <p>
+            <strong>Spoken Languages:</strong>
+            <label *ngFor="let languages of detail.spoken_languages">{{
+              languages.english_name
+            }}</label>
+          </p>
+          <p><strong>Production Companies:</strong></p>
+          <ul *ngFor="let companies of detail.production_companies">
+            <li>{{ companies.name }}</li>
+          </ul>
+          <p>
+            <strong>Production Countries:</strong>
+            <label *ngFor="let countries of detail.production_countries">{{
+              countries.name
+            }}</label>
+          </p>
+          <p><strong>Tag Line:</strong>{{ detail.tagline }}</p>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Casts">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto ipsum,
+          ea reiciendis quibusdam tenetur, illo sit dolor velit voluptas at
+          quos, quae quas officiis quod nam. Tempora earum cum assumenda!
+        </p>
+      </p-tabPanel>
+      <p-tabPanel header="Reviews">
+        <div class="review">
+          <div class="content" *ngFor="let review of reviews.results">
+            <app-reviews [review]="review"></app-reviews>
+          </div>
+        </div>
+      </p-tabPanel>
+      <p-tabPanel header="Similar">
+        <app-similiar
+          [similarMovies]="similiar"
+          [imgUrl]="imgUrl"
+        ></app-similiar>
+      </p-tabPanel>
+    </p-tabView>
+  </div>
+</div>

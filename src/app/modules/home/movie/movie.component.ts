@@ -9,12 +9,16 @@ import { MovieService } from 'src/app/service/movie.service';
   styleUrls: ['./movie.component.scss'],
 })
 export class MovieComponent {
-
   accountInfo: any;
-  listNowPlaying: any;
-  listPopular: any;
-  listTopRated: any;
-  listUpcoming: any;
+
+  movieNowPlaying: any;
+  moviePopular: any;
+  movieTopRated: any;
+  movieUpcoming: any;
+  tvAiringToday: any 
+  tvOnTheAir: any 
+  tvPopular: any
+  tvTopRated: any
   listMovieSearch: any;
   isSearching: boolean = false;
   user!: FormGroup;
@@ -34,7 +38,7 @@ export class MovieComponent {
       password: ['', Validators.required],
     });
     this.getAccount();
-    this.getListMovie();
+    this.getList();
   }
 
   getAccount() {
@@ -48,21 +52,37 @@ export class MovieComponent {
       }
     );
   }
-  getListMovie() {
-    this.fetchMovieList('now_playing', (results) => this.listNowPlaying = results);
-    this.fetchMovieList('popular', (results) => this.listPopular = results);
-    this.fetchMovieList('top_rated', (results) => this.listTopRated = results);
-    this.fetchMovieList('upcoming', (results) => this.listUpcoming = results);
+  getList() {
+    this.fetchMovieList('now_playing',(results) => (this.movieNowPlaying = results));
+    this.fetchMovieList('popular', (results) => (this.moviePopular = results));
+    this.fetchMovieList('top_rated',(results) => (this.movieTopRated = results));
+    this.fetchMovieList('upcoming', (results) => (this.movieUpcoming = results));
+
+    this.fetchTVList('airing_today', (results) => (this.tvAiringToday = results));
+    this.fetchTVList('on_the_air', (results) => (this.tvOnTheAir = results));
+    this.fetchTVList('popular', (results) => (this.tvPopular = results));
+    this.fetchTVList('top_rated', (results) => (this.tvTopRated = results));
   }
 
   fetchMovieList(movieList: string, callback: (results: any) => void) {
     const category = 'movie';
     const page = 1;
 
-    this.movieService.getListMovie(category, movieList, page)
+    this.movieService
+      .getList(category, movieList, page)
       .subscribe((list) => {
-        console.log('list', list);
-        this.category = category;
+        this.totalpage = list.total_pages;
+        callback(list.results);
+      });
+  }
+
+  fetchTVList(TvList: string, callback: (results: any) => void) {
+    const category = 'tv';
+    const page = 1;
+
+    this.movieService
+      .getList(category, TvList, page)
+      .subscribe((list) => {
         this.totalpage = list.total_pages;
         callback(list.results);
       });
@@ -75,56 +95,9 @@ export class MovieComponent {
         .searchMovies(this.category, this.keyword)
         .subscribe((data) => {
           this.listMovieSearch = data.results;
-          console.log(data.results);
         });
     } else if (this.keyword.trim() === '') {
       this.isSearching = false;
     }
   }
 }
-  // getListMovie() {
-  //   this.getMovieListNowPlaying('movie', 'now_playing', 1);
-  //   this.getMovieListPopular('movie', 'popular', 1);
-  //   this.getMovieListTopRated('movie', 'top_rated', 1);
-  //   this.getMovieListUpcoming('movie', 'upcoming', 1);
-  // }
-  // getMovieListNowPlaying(category: string, movieList: string, page: number) {
-  //   this.movieService
-  //     .getListMovie(category, movieList, page)
-  //     .subscribe((list) => {
-  //       console.log('list', list);
-  //       this.category = category;
-  //       this.totalpage = list.total_pages;
-  //       this.listNowPlaying = list.results;
-  //     });
-  // }
-  // getMovieListPopular(category: string, movieList: string, page: number) {
-  //   this.movieService
-  //     .getListMovie(category, movieList, page)
-  //     .subscribe((list) => {
-  //       console.log('list', list);
-  //       this.category = category;
-  //       this.totalpage = list.total_pages;
-  //       this.listPopular = list.results;
-  //     });
-  // }
-  // getMovieListTopRated(category: string, movieList: string, page: number) {
-  //   this.movieService
-  //     .getListMovie(category, movieList, page)
-  //     .subscribe((list) => {
-  //       console.log('list', list);
-  //       this.category = category;
-  //       this.totalpage = list.total_pages;
-  //       this.listTopRated = list.results;
-  //     });
-  // }
-  // getMovieListUpcoming(category: string, movieList: string, page: number) {
-  //   this.movieService
-  //     .getListMovie(category, movieList, page)
-  //     .subscribe((list) => {
-  //       console.log('list', list);
-  //       this.category = category;
-  //       this.totalpage = list.total_pages;
-  //       this.listUpcoming = list.results;
-  //     });
-  // }
