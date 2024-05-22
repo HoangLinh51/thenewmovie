@@ -1,0 +1,41 @@
+<div class="search-container">
+  <div class="search-bar">
+    <form [formGroup]="formSearch">
+      <input placeholder="Search..." formControlName="query" />
+      <p-dropdown
+        [options]="category"
+        formControlName="category"
+        optionLabel="name"
+      />
+      <button type="submit" (click)="onSearch()">Search</button>
+    </form>
+  </div>
+  <div class="search-header">
+    <p>
+      showing results for
+      <span class="highlight">{{ formSearch.value.query }}</span>
+    </p>
+  </div>
+  <div class="results-grid">
+    <div class="result-item" *ngFor="let result of listSearch">
+      <img
+        [src]="
+          imgUrl +
+          (result.profile_path ? result.profile_path : result.poster_path)
+        "
+        alt="{{ result.original_name }}"
+        class="result-image"
+      />
+      <!-- <div class="placeholder" *ngIf="!result.image">RV</div> -->
+      <div class="result-details">
+        <h2 class="result-title">
+          {{ result.original_name }}{{ result.original_title }}
+        </h2>
+        <p class="result-type">{{ result.media_type }}</p>
+        <!-- <p class="result-info" *ngIf="result.type !== 'Person'">Tv • {{ result.rating }} • {{ result.language }}</p>
+          <p class="result-genres" *ngIf="result.genres">{{ result.genres.join(', ') }}</p> -->
+      </div>
+    </div>
+    <p-paginator *ngIf="totalpage" [rows]="20" [totalRecords]="totalpage" (onPageChange)="onPageChange($event)"></p-paginator>
+  </div>
+</div>

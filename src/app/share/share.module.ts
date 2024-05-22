@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
 import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
@@ -25,6 +26,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
     TabViewModule,
     DialogModule,
     PaginatorModule,
+    DropdownModule,
   ],
   exports: [
     FormsModule,
@@ -35,6 +37,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
     TabViewModule,
     DialogModule,
     PaginatorModule,
+    DropdownModule,
   ],
 })
 export class ShareModule {}

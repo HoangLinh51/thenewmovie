@@ -39,7 +39,7 @@ export class MovieService {
     };
     return this.http
       .get<any>(
-        this.apiUrl + '/3/' + category + '/' + list,
+        this.apiUrl + `/3/${category}/${list}?page=${page}` ,
         optionsGet
       )
       .pipe(
@@ -51,7 +51,7 @@ export class MovieService {
       );
   }
 
-  searchMovies(category: string, keyword: string): Observable<any> {
+  search(category: string, keyword: string, page: number): Observable<any> {
     const optionsGet = {
       method: 'GET',
       headers: {
@@ -62,7 +62,7 @@ export class MovieService {
     };
     return this.http
       .get<any>(
-        this.apiUrl + '3/search/' + category + '?query=' + keyword,
+        this.apiUrl + `/3/search/${category}?query=${keyword}&page=${page}`,
         optionsGet
       )
       .pipe(
