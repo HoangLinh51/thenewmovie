@@ -1,27 +1,95 @@
-<div class="header">
-  <h2>{{ list }}</h2>
-  <div class="swipe">
-    <button (click)="scrollLeft()" data-tooltip-content="Swipe Left">
-      <i class="fa-solid fa-chevron-left"></i>
-    </button>
-    Swipe
-    <button (click)="scrollRight()" data-tooltip-content="Swipe Right">
-      <i class="fa-solid fa-chevron-right"></i>
-    </button>
+<div class="tv-container">
+  <div class="header">
+    <h1>Movie</h1>
   </div>
-</div>
-<div class="outer-container">
-  <div class="list-container" #listContainer>
-    <div
-      class="list-item"
-      *ngFor="let listMovie of listMovie"
-      [routerLink]="['/detail/tv', listMovie.id]"
-    >
-      <img
-        [src]="imgUrl + listMovie.poster_path"
-        alt="{{ listMovie.original_name }}"
-      />
-      <p>{{ listMovie.original_name }}</p>
-    </div>
-  </div>
+  <p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <label class="title" (click)="getListMovie('tv', 'airing_today', 1)"
+          >Airing Today</label
+        >
+      </ng-template>
+      <div class="tv-grid">
+        <div class="tv-item" *ngFor="let tv of dataResults">
+          <img
+            [src]="imgUrl + tv.poster_path"
+            alt="{{ tv.original_title }}"
+          />
+          <div class="tv-title">{{ tv.original_title }}</div>
+        </div>
+        <p-paginator
+          *ngIf="totalPages"
+          [rows]="20"
+          [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <label class="title" (click)="getListMovie('tv', 'on_the_air', 1)"
+          >On The Air</label
+        >
+      </ng-template>
+      <div class="tv-grid">
+        <div class="tv-item" *ngFor="let tv of dataResults">
+          <img
+            [src]="imgUrl + tv.poster_path"
+            alt="{{ tv.original_title }}"
+          />
+          <div class="tv-title">{{ tv.original_title }}</div>
+        </div>
+        <p-paginator
+          *ngIf="totalPages"
+          [rows]="20"
+          [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <label class="title" (click)="getListMovie('tv', 'popular', 1)"
+          >Popular</label
+        >
+      </ng-template>
+      <div class="tv-grid">
+        <div class="tv-item" *ngFor="let tv of dataResults">
+          <img
+            [src]="imgUrl + tv.poster_path"
+            alt="{{ tv.original_title }}"
+          />
+          <div class="tv-title">{{ tv.original_title }}</div>
+        </div>
+        <p-paginator
+          *ngIf="totalPages"
+          [rows]="20"
+          [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <label class="title" (click)="getListMovie('tv', 'top_rated', 1)"
+          >Top Rated</label
+        >
+      </ng-template>
+      <div class="tv-grid">
+        <div class="tv-item" *ngFor="let tv of dataResults">
+          <img
+            [src]="imgUrl + tv.poster_path"
+            alt="{{ tv.original_title }}"
+          />
+          <div class="tv-title">{{ tv.original_title }}</div>
+        </div>
+        <p-paginator
+          *ngIf="totalPages"
+          [rows]="20"
+          [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"
+        ></p-paginator>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
 </div>
