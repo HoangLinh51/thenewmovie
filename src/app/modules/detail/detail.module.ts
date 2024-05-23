@@ -7,6 +7,7 @@ import { SimiliarComponent } from '../../layout/similiar/similiar.component';
 import { MovieComponent } from './movie/movie.component';
 import { TvComponent } from './tv/tv.component';
 import { SeasonsComponent } from '../../layout/seasons/seasons.component';
+import { PersonComponent } from './person/person.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { SeasonsComponent } from '../../layout/seasons/seasons.component';
     SimiliarComponent,
     TvComponent,
     SeasonsComponent,
+    PersonComponent,
   ],
   imports: [CommonModule, DetailRoutingModule, ShareModule],
 })

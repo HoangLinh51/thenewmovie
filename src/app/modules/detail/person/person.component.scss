@@ -1,0 +1,27 @@
+.person-detail-container {
+  display: flex;
+  padding: 20px;
+  background-color: #f9f9f9;
+
+  .person-image-container {
+    flex: 1;
+    text-align: center;
+
+    .person-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+    }
+  }
+
+  .person-info-container {
+    flex: 2;
+    padding: 0 20px;
+
+    .title {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+  }
+}

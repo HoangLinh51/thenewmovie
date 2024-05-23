@@ -1,16 +1,8 @@
 <div class="movie-detail-container">
   <div class="movie-banner">
-    <img
-      [src]="imgUrl + detail.backdrop_path"
-      alt="Ghostbusters: Frozen"
-      class="banner-image"
-    />
+    <img [src]="imgUrl + detail.backdrop_path" class="banner-image" />
     <div class="movie-poster">
-      <img
-        [src]="imgUrl + detail.poster_path"
-        alt="Ghostbusters: Frozen"
-        class="poster-image"
-      />
+      <img [src]="imgUrl + detail.poster_path" class="poster-image" />
       <div class="rating">
         <span>{{ detail.vote_average }}</span>
       </div>
@@ -32,14 +24,13 @@
         <div class="extra-details">
           <p><strong>Release:</strong> {{ detail.release_date }}</p>
           <p>
-            <strong>Genre:</strong
-            ><label *ngFor="let genre of detail.genres">{{ genre.name }}</label>
+            <strong>Genre:</strong><label *ngFor="let genre of detail.genres">{{ genre.name }}</label>
           </p>
           <p>
             <strong>Spoken Languages:</strong>
             <label *ngFor="let languages of detail.spoken_languages">{{
               languages.english_name
-            }}</label>
+              }}</label>
           </p>
           <p><strong>Production Companies:</strong></p>
           <ul *ngFor="let companies of detail.production_companies">
@@ -49,7 +40,7 @@
             <strong>Production Countries:</strong>
             <label *ngFor="let countries of detail.production_countries">{{
               countries.name
-            }}</label>
+              }}</label>
           </p>
           <p><strong>Tag Line:</strong>{{ detail.tagline }}</p>
         </div>
@@ -69,10 +60,7 @@
         </div>
       </p-tabPanel>
       <p-tabPanel header="Similar">
-        <app-similiar
-          [similarMovies]="similiar"
-          [imgUrl]="imgUrl"
-        ></app-similiar>
+        <app-similiar [similarMovies]="similiar" [imgUrl]="imgUrl"></app-similiar>
       </p-tabPanel>
     </p-tabView>
   </div>

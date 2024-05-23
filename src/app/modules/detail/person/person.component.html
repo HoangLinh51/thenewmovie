@@ -1,17 +1,9 @@
-<div class="movie-detail-container">
+<!-- <div class="movie-detail-container">
   <div class="movie-banner">
-    <img [src]="imgUrl + detail.backdrop_path" class="banner-image" />
+    <img [src]="imgUrl + detail.profile_path" class="banner-image" />
     <div class="movie-poster">
-      <img [src]="imgUrl + detail.poster_path" class="poster-image" />
-      <div class="rating">
-        <span>{{ detail.vote_average }}</span>
-      </div>
       <div class="title">
-        <h3>{{ detail.title }}</h3>
-        <div class="actions">
-          <button class="watch-btn">watch</button>
-          <button class="trailer-btn">trailer</button>
-        </div>
+        <h3>{{ detail.name }}</h3>
       </div>
     </div>
   </div>
@@ -19,11 +11,11 @@
     <p-tabView>
       <p-tabPanel header="Overview">
         <p>
-          {{ detail.overview }}
+          {{ detail.biography }}
         </p>
         <div class="extra-details">
-          <p><strong>First air date:</strong> {{ detail.first_air_date }}</p>
-          <p><strong>Last air date:</strong> {{ detail.last_air_date }}</p>
+          <p><strong>Dirthday:</strong> {{ detail.birthday }}</p>
+          <p><strong>Place of birth:</strong> {{ detail.place_of_birth }}</p>
           <p>
             <strong>Genre:</strong><label *ngFor="let genre of detail.genres"> {{ genre.name }},</label>
           </p>
@@ -71,5 +63,32 @@
         <app-similiar [similarMovies]="similiar" [imgUrl]="imgUrl"></app-similiar>
       </p-tabPanel>
     </p-tabView>
+  </div>
+</div> -->
+
+
+<div class="person-detail-container">
+  <div class="person-image-container">
+    <img  [src]="imgUrl + detail.profile_path" alt="{{ detail.name }}" class="person-image" />
+  </div>
+  <div class="person-info-container">
+    <div class="tab-content">
+      <h2>Overview</h2>
+      <div class="body">
+        <div class="title">
+          <h3>{{ detail.name }}</h3> --- <h4>{{detail.known_for_department}}</h4>
+        </div>
+        <p>{{ detail.biography }}</p>
+
+        <h3>Birthday</h3>
+        <p>{{ detail.birthday }}</p>
+        <h4>Place of Birth</h4>
+        <p>{{ detail.place_of_birth }}</p>
+        <h4>Also known as</h4>
+        <div *ngFor="let alsoKnownAs of detail.also_known_as">
+          <li>{{ alsoKnownAs }}</li>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

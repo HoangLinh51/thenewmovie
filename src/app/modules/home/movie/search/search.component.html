@@ -2,11 +2,7 @@
   <div class="search-bar">
     <form [formGroup]="formSearch">
       <input placeholder="Search..." formControlName="query" />
-      <p-dropdown
-        [options]="category"
-        formControlName="category"
-        optionLabel="name"
-      />
+      <p-dropdown [options]="category" formControlName="category" optionLabel="name" />
       <button type="submit" (click)="onSearch()">Search</button>
     </form>
   </div>
@@ -17,25 +13,39 @@
     </p>
   </div>
   <div class="results-grid">
-    <div class="result-item" *ngFor="let result of listSearch">
-      <img
-        [src]="
-          imgUrl +
-          (result.profile_path ? result.profile_path : result.poster_path)
-        "
-        alt="{{ result.original_name }}"
-        class="result-image"
-      />
-      <!-- <div class="placeholder" *ngIf="!result.image">RV</div> -->
-      <div class="result-details">
-        <h2 class="result-title">
-          {{ result.original_name }}{{ result.original_title }}
-        </h2>
-        <p class="result-type">{{ result.media_type }}</p>
-        <!-- <p class="result-info" *ngIf="result.type !== 'Person'">Tv • {{ result.rating }} • {{ result.language }}</p>
-          <p class="result-genres" *ngIf="result.genres">{{ result.genres.join(', ') }}</p> -->
+    <div *ngFor="let result of listSearch">
+      <div class="result-item" *ngIf="result.media_type === 'person'" [routerLink]="['/detail/person', result.id]">
+        <img [src]="imgUrl + (result.profile_path ? result.profile_path : result.poster_path)"
+          alt="{{ result.original_name }}" class="result-image" />
+        <div class="result-details">
+          <h2 class="result-title">
+            {{ result.original_name || result.original_title }}
+          </h2>
+          <p class="result-type">{{ result.media_type }}</p>
+        </div>
+      </div>
+      <div class="result-item" *ngIf="result.media_type === 'movie'" [routerLink]="['/detail/movie', result.id]">
+        <img [src]="imgUrl +(result.profile_path ? result.profile_path : result.poster_path)"
+          alt="{{ result.original_name }}" class="result-image" />
+        <div class="result-details">
+          <h2 class="result-title">
+            {{ result.original_name || result.original_title }}
+          </h2>
+          <p class="result-type">{{ result.media_type }}</p>
+        </div>
+      </div>
+      <div class="result-item" *ngIf="result.media_type === 'tv'" [routerLink]="['/detail/tv', result.id]">
+        <img [src]="imgUrl + (result.profile_path ? result.profile_path : result.poster_path)"
+          alt="{{ result.original_name }}" class="result-image" />
+        <div class="result-details">
+          <h2 class="result-title">
+            {{ result.original_name || result.original_title }}
+          </h2>
+          <p class="result-type">{{ result.media_type }}</p>
+        </div>
       </div>
     </div>
-    <p-paginator *ngIf="totalpage" [rows]="20" [totalRecords]="totalpage" (onPageChange)="onPageChange($event)"></p-paginator>
+    <p-paginator *ngIf="totalpage" [rows]="20" [totalRecords]="totalpage"
+      (onPageChange)="onPageChange($event)"></p-paginator>
   </div>
 </div>
