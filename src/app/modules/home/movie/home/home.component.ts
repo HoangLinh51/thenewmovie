@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -14,28 +15,25 @@ export class HomeComponent {
   moviePopular: any;
   movieTopRated: any;
   movieUpcoming: any;
-  tvAiringToday: any 
-  tvOnTheAir: any 
+  tvAiringToday: any
+  tvOnTheAir: any
   tvPopular: any
   tvTopRated: any
-  listMovieSearch: any;
+  trendingList: any
   isSearching: boolean = false;
   user!: FormGroup;
 
-  imgUrl = 'https://image.tmdb.org/t/p/original';
+  imgUrl: string = '';
   totalpage: number = 0;
-  currentPage: number = 0;
-  keyword = '';
-  request_token: string = '';
-  category: string = 'movie';
 
-  constructor(private movieService: MovieService, private form: FormBuilder) {}
+  constructor(private movieService: MovieService, private form: FormBuilder) { }
 
   ngOnInit() {
     this.user = this.form.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+    this.imgUrl = IMGURL
     this.getAccount();
     this.getList();
   }
@@ -52,9 +50,9 @@ export class HomeComponent {
     );
   }
   getList() {
-    this.fetchMovieList('now_playing',(results) => (this.movieNowPlaying = results));
+    this.fetchMovieList('now_playing', (results) => (this.movieNowPlaying = results));
     this.fetchMovieList('popular', (results) => (this.moviePopular = results));
-    this.fetchMovieList('top_rated',(results) => (this.movieTopRated = results));
+    this.fetchMovieList('top_rated', (results) => (this.movieTopRated = results));
     this.fetchMovieList('upcoming', (results) => (this.movieUpcoming = results));
 
     this.fetchTVList('airing_today', (results) => (this.tvAiringToday = results));

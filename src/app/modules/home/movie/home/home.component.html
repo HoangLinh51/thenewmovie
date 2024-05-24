@@ -1,67 +1,25 @@
-<!-- <div class="vertical-nav">
-  <a href="/home" class="nav-item active"><i class="pi pi-home"></i></a>
-  <a href="/search" class="nav-item"><i class="pi pi-search"></i> </a>
-  <a href="/movie" class="nav-item"><i class="pi pi-play-circle"></i></a>
-  <a href="/tv" class="nav-item"><i class="pi pi-desktop"></i></a>
-  <a href="/collections" class="nav-item"><i class="pi pi-bookmark"></i></a>
-  <a href="/settings" class="nav-item"><i class="pi pi-cog"></i></a>
+<app-slide></app-slide>
+<div class="component">
+  <app-component [listMovie]="movieNowPlaying" [list]="'Now Playing Movie'"></app-component>
 </div>
-<div class="movie-detail-container"> -->
-    <!-- <div class="backdrop-container"*ngFor="let listMovies of listMovie" >
-      <img class="movie-backdrop" loading="lazy" [src]="imgUrl + listMovies.poster_path" alt="Movie Backdrop">
-      <div class="movie-title-container">
-        <h1 class="movie-title">{{ listMovies.original_title }}</h1>
-        <div class="movie-actions">
-          <button mat-button color="primary">Watch</button>
-          <button mat-button color="accent">Detail</button>
-          <button mat-icon-button>
-          </button>
-        </div>
-      </div>
-    </div> -->
-    <div class="component">
-      <app-component
-        [listMovie]="movieNowPlaying"
-        [list]="'Now Playing Movie'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="moviePopular"
-        [list]="'Popular Movie'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="movieTopRated"
-        [list]="'Top Rated Movie'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="movieUpcoming"
-        [list]="'Upcoming Movie'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="tvAiringToday"
-        [list]="'TV programs airing today'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="tvOnTheAir"
-        [list]="'Currently Airing on Tv'"
-      ></app-component>
-    </div>
-    <div class="component">
-      <app-component [listMovie]="tvPopular" [list]="'Trending TV'"></app-component>
-    </div>
-    <div class="component">
-      <app-component
-        [listMovie]="tvTopRated"
-        [list]="'Highest Rated TV Shows'"
-      ></app-component>
-    </div>
-  <!-- </div> -->
+<div class="component">
+  <app-component [listMovie]="moviePopular" [list]="'Popular Movie'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="movieTopRated" [list]="'Top Rated Movie'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="movieUpcoming" [list]="'Upcoming Movie'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="tvAiringToday" [list]="'TV programs airing today'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="tvOnTheAir" [list]="'Currently Airing on Tv'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="tvPopular" [list]="'Trending TV'"></app-component>
+</div>
+<div class="component">
+  <app-component [listMovie]="tvTopRated" [list]="'Highest Rated TV Shows'"></app-component>
+</div>

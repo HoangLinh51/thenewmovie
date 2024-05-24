@@ -5,90 +5,50 @@
   <p-tabView>
     <p-tabPanel>
       <ng-template pTemplate="header">
-        <label class="title" (click)="getListMovie('movie', 'now_playing', 1)"
-          >Now Playing</label
-        >
+        <label class="title" (click)="getListMovie('movie', 'now_playing', 1)">Now Playing</label>
       </ng-template>
       <div class="movies-grid">
         <div class="movie-item" *ngFor="let movie of dataResults">
-          <img
-            [src]="imgUrl + movie.poster_path"
-            alt="{{ movie.original_title }}"
-          />
-          <div class="movie-title">{{ movie.original_title }}</div>
+          <app-item [dataResults]="movie"></app-item>
         </div>
-        <p-paginator
-          *ngIf="totalPages"
-          [rows]="20"
-          [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"
-        ></p-paginator>
+        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
-        <label class="title" (click)="getListMovie('movie', 'popular', 1)"
-          >Popular</label
-        >
+        <label class="title" (click)="getListMovie('movie', 'popular', 1)">Popular</label>
       </ng-template>
       <div class="movies-grid">
         <div class="movie-item" *ngFor="let movie of dataResults">
-          <img
-            [src]="imgUrl + movie.poster_path"
-            alt="{{ movie.original_title }}"
-          />
-          <div class="movie-title">{{ movie.original_title }}</div>
+          <app-item [dataResults]="movie"></app-item>
         </div>
-        <p-paginator
-          *ngIf="totalPages"
-          [rows]="20"
-          [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"
-        ></p-paginator>
+        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
-        <label class="title" (click)="getListMovie('movie', 'top_rated', 1)"
-          >Top Rated</label
-        >
+        <label class="title" (click)="getListMovie('movie', 'top_rated', 1)">Top Rated</label>
       </ng-template>
       <div class="movies-grid">
         <div class="movie-item" *ngFor="let movie of dataResults">
-          <img
-            [src]="imgUrl + movie.poster_path"
-            alt="{{ movie.original_title }}"
-          />
-          <div class="movie-title">{{ movie.original_title }}</div>
+          <app-item [dataResults]="movie"></app-item>
         </div>
-        <p-paginator
-          *ngIf="totalPages"
-          [rows]="20"
-          [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"
-        ></p-paginator>
+        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
-        <label class="title" (click)="getListMovie('movie', 'upcoming', 1)"
-          >Upcoming</label
-        >
+        <label class="title" (click)="getListMovie('movie', 'upcoming', 1)">Upcoming</label>
       </ng-template>
       <div class="movies-grid">
         <div class="movie-item" *ngFor="let movie of dataResults">
-          <img
-            [src]="imgUrl + movie.poster_path"
-            alt="{{ movie.original_title }}"
-          />
-          <div class="movie-title">{{ movie.original_title }}</div>
+          <app-item [dataResults]="movie"></app-item>
         </div>
-        <p-paginator
-          *ngIf="totalPages"
-          [rows]="20"
-          [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"
-        ></p-paginator>
+        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
     </p-tabPanel>
   </p-tabView>

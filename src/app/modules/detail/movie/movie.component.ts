@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -15,8 +16,8 @@ export class MovieComponent {
   isFullText: boolean = false;
   buttonText: string = 'Show More';
 
-  imgUrl = 'https://image.tmdb.org/t/p/original';
-
+  imgUrl: string = ''
+  
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService
@@ -24,6 +25,7 @@ export class MovieComponent {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || '';
+    this.imgUrl = IMGURL
     this.getDetail(this.id);
     this.getMovieSimiliar(this.id);
   }

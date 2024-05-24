@@ -1,0 +1,19 @@
+<div class="slider" #listContainer>
+  <div class="show-container" *ngFor="let trendingList of trendingList; let i = index" [class.active]="i === currentSlide">
+    <div class="show-image-wrapper">
+      <img [src]="imgUrl + trendingList.backdrop_path" alt="Golden Kamuy" class="show-image">
+    </div>
+    <div class="show-info">
+      <div class="show-type">{{trendingList.media_type}}</div>
+      <div class="show-name">
+        <div class="show-title">{{trendingList.original_title || trendingList.original_name}}</div>
+        <div class="show-actions">
+          <button class="watch-button"><i class="pi pi-play"></i>watch</button>
+          <button class="detail-button">detail</button>
+          <i class="pi pi-bookmark"></i>
+          <i class="pi pi-share-alt"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PaginatorState } from 'primeng/paginator';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
 interface Category {
   name: string;
@@ -17,7 +18,7 @@ export class SearchComponent {
   listSearch: any;
   totalpage: number = 0;
 
-  imgUrl = 'https://image.tmdb.org/t/p/original';
+  imgUrl: string = '';
 
   constructor(private form: FormBuilder, private movieService: MovieService) {}
 
@@ -34,6 +35,7 @@ export class SearchComponent {
       query: ['', Validators.required],
       category: ['', Validators.required],
     });
+    this.imgUrl = IMGURL
   }
 
   onPageChange(event: PaginatorState) {

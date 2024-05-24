@@ -1,7 +1,5 @@
-
-
 .seasons-item {
-    width: 700px;
+  width: 700px;
   display: flex;
   align-items: flex-start;
   margin-bottom: 20px;
@@ -9,31 +7,31 @@
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
 
-.seasons-poster {
-  width: 100px;
-  height: 150px;
-  object-fit: cover;
-}
+  .seasons-poster {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+  }
 
-.seasons-details {
-  padding: 10px;
-}
+  .seasons-details {
+    padding: 10px;
 
-.seasons-title {
-  font-size: 18px;
-  margin: 0;
-}
+    .seasons-title {
+      font-size: 18px;
+      margin: 0;
+    }
 
-.seasons-info {
-  font-size: 14px;
-  color: #657d9a;
-  margin: 5px 0;
-}
+    .seasons-info {
+      font-size: 14px;
+      color: #657d9a;
+      margin: 5px 0;
+    }
 
-.seasons-genres {
-  font-size: 14px;
-  color: #657d9a;
-  margin: 0;
+    .seasons-genres {
+      font-size: 14px;
+      color: #657d9a;
+      margin: 0;
+    }
+  }
 }

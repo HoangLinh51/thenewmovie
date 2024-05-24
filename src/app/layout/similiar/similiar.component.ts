@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild,ElementRef  } from '@angular/core';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 
 @Component({
   selector: 'app-similiar',
@@ -8,8 +9,11 @@ import { Component, Input, ViewChild,ElementRef  } from '@angular/core';
 export class SimiliarComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() similarMovies: any;
-  @Input() imgUrl!: string;
-
+  imgUrl: string = ''
+  
+  ngOnInit() {
+    this.imgUrl = IMGURL
+  }
   scrollLeft() {
     this.listContainer.nativeElement.scrollBy({
       left: -720,

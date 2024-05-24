@@ -2,7 +2,7 @@
   <div class="search-bar">
     <form [formGroup]="formSearch">
       <input placeholder="Search..." formControlName="query" />
-      <p-dropdown [options]="category" formControlName="category" optionLabel="name" />
+      <p-dropdown [options]="category" formControlName="category" optionLabel="name"/>
       <button type="submit" (click)="onSearch()">Search</button>
     </form>
   </div>

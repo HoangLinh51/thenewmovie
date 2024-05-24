@@ -8,7 +8,8 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class MovieService {
   private apiUrl = 'https://api.themoviedb.org';
-  constructor(private http: HttpClient) {}
+  private jsonUrl = 'assets/collection.json';
+  constructor(private http: HttpClient) { }
   getAccountInfo() {
     const optionsGet = {
       method: 'GET',
@@ -39,7 +40,7 @@ export class MovieService {
     };
     return this.http
       .get<any>(
-        this.apiUrl + `/3/${category}/${list}?page=${page}` ,
+        this.apiUrl + `/3/${category}/${list}?page=${page}`,
         optionsGet
       )
       .pipe(
@@ -74,25 +75,25 @@ export class MovieService {
       );
   }
 
-  getRequestToken() {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA',
-      },
-    };
-    return this.http
-      .get<any>(this.apiUrl + '3/authentication/token/new', options)
-      .pipe(
-        map((response) => response),
-        catchError((error) => {
-          console.error('Error:', error);
-          throw error;
-        })
-      );
-  }
+  // getRequestToken() {
+  //   const options = {
+  //     method: 'GET',
+  //     headers: {
+  //       accept: 'application/json',
+  //       Authorization:
+  //         'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA',
+  //     },
+  //   };
+  //   return this.http
+  //     .get<any>(this.apiUrl + '3/authentication/token/new', options)
+  //     .pipe(
+  //       map((response) => response),
+  //       catchError((error) => {
+  //         console.error('Error:', error);
+  //         throw error;
+  //       })
+  //     );
+  // }
 
   getDetail(id: string, category: string) {
     const options = {
@@ -145,5 +146,32 @@ export class MovieService {
       similarMovies: similarMovies$,
       reviews: reviews$,
     });
+  }
+
+  getCollection() {
+    return this.http.get<any>(this.jsonUrl);
+  }
+
+  getTrending(){
+      const optionsGet = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA'
+        }
+      };
+      return this.http
+        .get<any>(
+          this.apiUrl + `/3/trending/all/week`,
+          optionsGet
+        )
+        .pipe(
+          map((response) => response),
+          catchError((error) => {
+            console.error('Error:', error);
+            throw error;
+          })
+        );
+  
   }
 }

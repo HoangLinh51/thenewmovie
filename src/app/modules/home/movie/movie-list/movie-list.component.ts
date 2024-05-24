@@ -1,5 +1,6 @@
-  import { Component, ElementRef, Input, ViewChild, numberAttribute } from '@angular/core';
+import { Component } from '@angular/core';
 import { PaginatorState } from 'primeng/paginator';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -11,18 +12,19 @@ export class MovieListComponent {
   dataResults: any
   totalPages: number = 0;
   currentPage: number = 0;
-  category= 'movie'
-  list: string=''
-  imgUrl = 'https://image.tmdb.org/t/p/original';
-  constructor(private movieService: MovieService) {}
+  category = 'movie'
+  list: string = ''
+  imgUrl: string = '';
+  constructor(private movieService: MovieService) { }
 
   ngOnInit() {
+    this.imgUrl = IMGURL
     this.getListMovie('movie', 'now_playing', 1)
   }
 
   getListMovie(category: string, list: string, page: number) {
-    this.movieService.getList(category,list, page).subscribe(
-      (data) => {      
+    this.movieService.getList(category, list, page).subscribe(
+      (data) => {
         console.log('data.results', data.results)
         this.dataResults = data.results;
         this.list = list
@@ -37,7 +39,7 @@ export class MovieListComponent {
     if (event.page !== undefined) {
       console.log('this.currentPage', this.currentPage)
       this.currentPage = event.page + 1;
-      console.log('currentPage',this.currentPage )    
+      console.log('currentPage', this.currentPage)
       this.getListMovie(this.category, this.list, this.currentPage);
     }
   }

@@ -63,12 +63,12 @@
       <p-tabPanel header="Seasion">
         <div class="seasons">
           <div *ngFor="let seasons of detail.seasons">
-            <app-seasons [seasons]="seasons" [imgUrl]="imgUrl"></app-seasons>
+            <app-seasons [seasons]="seasons"></app-seasons>
           </div>
         </div>
       </p-tabPanel>
       <p-tabPanel header="Similar">
-        <app-similiar [similarMovies]="similiar" [imgUrl]="imgUrl"></app-similiar>
+        <app-similiar [similarMovies]="similiar"></app-similiar>
       </p-tabPanel>
     </p-tabView>
   </div>

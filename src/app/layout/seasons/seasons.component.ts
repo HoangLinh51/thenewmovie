@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { IMGURL } from 'src/app/constant/localstorage-key';
 
 @Component({
   selector: 'app-seasons',
@@ -8,7 +9,11 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 export class SeasonsComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() seasons: any;
-  @Input()imgUrl!: string
+  imgUrl: string = ''
+  
+  ngOnInit() {
+    this.imgUrl = IMGURL
+  }
 
   scrollLeft() {
     this.listContainer.nativeElement.scrollBy({

@@ -1,51 +1,48 @@
 .settings-container {
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
   margin: 0 auto;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.section {
-  margin-bottom: 20px;
-}
+  .section {
+    .account {
+      display: flex;
+      justify-content: space-between;
 
-h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
+      .auth {
+        display: flex;
+        gap: 10px;
+      }
+    }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+    .sync-box {
+      border: 1px solid #ddd;
+      padding: 10px;
+      border-radius: 4px;
+      text-align: center;
+      font-family: 'Courier New', Courier, monospace;
+    }
 
-ul li {
-  margin-bottom: 10px;
-}
+    .setting {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
 
-.sync-box {
-  border: 1px solid #ddd;
-  padding: 10px;
-  border-radius: 4px;
-  text-align: center;
-  font-family: 'Courier New', Courier, monospace;
-}
+      label {
+        flex: 1;
+        font-size: 18px;
+      }
 
-.setting {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.setting label {
-  flex: 1;
-  font-size: 18px;
-}
-
-.setting select {
-  flex: 1;
-  padding: 5px;
-  font-size: 16px;
+      select {
+        flex: 1;
+        padding: 5px;
+        font-size: 16px;
+      }
+    }
+  }
 }

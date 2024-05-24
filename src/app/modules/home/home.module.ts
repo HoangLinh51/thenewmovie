@@ -14,7 +14,8 @@ import { HomeComponent } from './movie/home/home.component';
 import { CollectionsComponent } from './movie/collections/collections.component';
 import { SettingsComponent } from './movie/settings/settings.component';
 import { ComponentComponent } from './movie/home/component/component.component';
-
+import { ItemComponent } from 'src/app/layout/item/item.component';
+import { SlideComponent } from './movie/home/slide/slide.component';
 @NgModule({
   declarations: [
     PageComponent,
@@ -25,8 +26,8 @@ import { ComponentComponent } from './movie/home/component/component.component';
     HomeComponent,
     CollectionsComponent,
     SettingsComponent,
-    ComponentComponent,
+    ComponentComponent, ItemComponent, SlideComponent
   ],
   imports: [CommonModule, HomeRoutingModule, ShareModule, CalendarModule],
 })
-export class HomeModule {}
+export class HomeModule { }

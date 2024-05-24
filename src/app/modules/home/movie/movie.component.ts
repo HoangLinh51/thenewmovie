@@ -1,7 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { PaginatorState } from 'primeng/paginator';
-import { MovieService } from 'src/app/service/movie.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-movie',
