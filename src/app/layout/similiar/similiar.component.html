@@ -1,6 +1,6 @@
 <div class="similar">
   <div class="container-item" #listContainer>
-    <div class="list-item" *ngFor="let similar of similarMovies.results" [routerLink]="['/detail/', similar.id]">
+    <div class="list-item" *ngFor="let similar of similarMovies.results" [routerLink]="['/detail/',category, similar.id]">
       <img [src]="imgUrl + similar.poster_path" alt="{{ similar.title }}" />
       <p>{{ similar.title }} {{similar.original_name}}</p>
     </div>

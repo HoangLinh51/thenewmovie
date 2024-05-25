@@ -18,7 +18,7 @@ export class SlideComponent {
 
   ngOnInit() {
     this.imgUrl = IMGURL
-    this.scrollLeft();
+    this.scrollSlide();
     this.fetchTrendingList((results) => {
       console.log(results)
       this.trendingList = results
@@ -33,21 +33,27 @@ export class SlideComponent {
         callback(list.results);
       });
   }
-    
-  scrollLeft() {
+
+  scrollSlide() {
     setInterval(() => {
-      this.listContainer.nativeElement.scrollBy({
-        left: 1450,
+      const listContainer = this.listContainer.nativeElement;
+      const scrollDistance = listContainer.clientWidth + 20
+  
+      listContainer.scrollBy({
+        left: scrollDistance,
         behavior: 'smooth',
       });
-      
-      // Kiểm tra và quay lại vị trí đầu nếu đã cuộn hết
-      if (this.listContainer.nativeElement.scrollLeft + this.listContainer.nativeElement.clientWidth >= this.listContainer.nativeElement.scrollWidth) {
-        this.listContainer.nativeElement.scrollTo({
-          left: 0,
-          behavior: 'smooth',
-        });
+  
+      if (listContainer.scrollLeft + scrollDistance >= listContainer.scrollWidth) {
+        setTimeout(() => {
+          listContainer.scrollTo({
+            left: 0,
+            behavior: 'smooth',
+          });
+        }, 500)
       }
-    }, 5000); // Thời gian 3 giây
+    }, 5000);
   }
+  
+  
 }

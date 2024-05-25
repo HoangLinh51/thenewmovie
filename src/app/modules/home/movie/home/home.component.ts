@@ -10,7 +10,6 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class HomeComponent {
   accountInfo: any;
-
   movieNowPlaying: any;
   moviePopular: any;
   movieTopRated: any;
@@ -42,7 +41,6 @@ export class HomeComponent {
     this.movieService.getAccountInfo().subscribe(
       (data) => {
         this.accountInfo = data;
-        console.log('Account info:', this.accountInfo);
       },
       (error) => {
         console.error('Error:', error);

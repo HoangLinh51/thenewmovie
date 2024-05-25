@@ -11,7 +11,6 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
-
 @NgModule({
   declarations: [],
   imports: [
@@ -37,7 +36,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
     TabViewModule,
     DialogModule,
     PaginatorModule,
-    DropdownModule,
+    DropdownModule, 
   ],
 })
-export class ShareModule {}
+export class ShareModule { }

@@ -25,7 +25,6 @@ export class MovieListComponent {
   getListMovie(category: string, list: string, page: number) {
     this.movieService.getList(category, list, page).subscribe(
       (data) => {
-        console.log('data.results', data.results)
         this.dataResults = data.results;
         this.list = list
         this.totalPages = data.total_pages
@@ -37,9 +36,7 @@ export class MovieListComponent {
   }
   onPageChange(event: PaginatorState) {
     if (event.page !== undefined) {
-      console.log('this.currentPage', this.currentPage)
       this.currentPage = event.page + 1;
-      console.log('currentPage', this.currentPage)
       this.getListMovie(this.category, this.list, this.currentPage);
     }
   }

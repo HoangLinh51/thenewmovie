@@ -20,7 +20,7 @@ export class SearchComponent {
 
   imgUrl: string = '';
 
-  constructor(private form: FormBuilder, private movieService: MovieService) {}
+  constructor(private form: FormBuilder, private movieService: MovieService) { }
 
   ngOnInit() {
     this.category = [
@@ -41,7 +41,6 @@ export class SearchComponent {
   onPageChange(event: PaginatorState) {
     if (event.page !== undefined) {
       this.totalpage = event.page + 1;
-      console.log('form', this.formSearch.value, '--', this.totalpage )
       this.movieService.search(
         this.formSearch.value.category.code,
         this.formSearch.value.query,
@@ -61,8 +60,6 @@ export class SearchComponent {
         .subscribe((data) => {
           this.listSearch = data.results;
           this.totalpage = data.total_pages;
-          console.log('data.total_pages', this.totalpage)
-          console.log(data);
         });
     }
   }

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MovieComponent } from './movie/movie.component';
 import { TvComponent } from './tv/tv.component';
 import { PersonComponent } from './person/person.component';
+import { CollectionComponent } from './collection/collection.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'person/:id',
     component: PersonComponent,
   },
+  {
+    path: 'collection/:id',
+    component: CollectionComponent
+  }
 ];
 
 @NgModule({

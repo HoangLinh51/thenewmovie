@@ -8,7 +8,7 @@
   </div>
   <div class="search-header">
     <p>
-      showing results for
+      Showing results for
       <span class="highlight">{{ formSearch.value.query }}</span>
     </p>
   </div>
@@ -45,7 +45,9 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="pagination">
     <p-paginator *ngIf="totalpage" [rows]="20" [totalRecords]="totalpage"
-      (onPageChange)="onPageChange($event)"></p-paginator>
+    (onPageChange)="onPageChange($event)"></p-paginator>
   </div>
 </div>

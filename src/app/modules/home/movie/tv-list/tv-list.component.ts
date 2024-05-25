@@ -15,7 +15,7 @@ export class TvListComponent {
   category = 'tv'
   list: string = ''
   imgUrl: string = '';
-  
+
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
@@ -26,7 +26,6 @@ export class TvListComponent {
   getListMovie(category: string, list: string, page: number) {
     this.movieService.getList(category, list, page).subscribe(
       (data) => {
-        console.log('data.results', data)
         this.dataResults = data.results;
         this.list = list
         this.totalPages = data.total_pages
@@ -39,9 +38,7 @@ export class TvListComponent {
 
   onPageChange(event: PaginatorState) {
     if (event.page !== undefined) {
-      console.log('this.currentPage', this.currentPage)
       this.currentPage = event.page + 1;
-      console.log('currentPage', this.currentPage)
       this.getListMovie(this.category, this.list, this.currentPage);
     }
   }

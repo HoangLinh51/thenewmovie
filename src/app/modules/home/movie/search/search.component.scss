@@ -35,7 +35,7 @@
     font-size: 18px;
 
     .highlight {
-      color: #ffcc00;
+      color: #007bff;
     }
   }
 
@@ -74,5 +74,10 @@
         }
       }
     }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -15,27 +15,36 @@ class DataJson {
 })
 export class CollectionsComponent {
   dataJson: DataJson[] = []
-  currentPage: number = 0; 
   imgUrl: string = ''
+
+  paginatedData: any[] = [];
+  first: number = 0;
+  pageSize: number = 20;
+
   constructor(private movieService: MovieService) { }
+
   ngOnInit() {
     this.imgUrl = IMGURL
-    // this.getCollection()
-  }
-
-  onPageChange(event: PaginatorState) {
-    if (event.page !== undefined) {
-      console.log('this.currentPage', this.currentPage)
-      this.currentPage = event.page + 1;
-      console.log('currentPage', this.currentPage)
-      // this.getCollection(this.category, this.list, this.currentPage);
-    }
+    this.getCollection()
   }
 
   getCollection() {
     this.movieService.getCollection().subscribe((data) => {
       this.dataJson = data;
-      console.log('data', this.dataJson)
     });
+  }
+
+  onPageChange(event: PaginatorState) {
+    if (event.first !== undefined) {
+      this.first = event.first;
+    }
+    if (event.rows !== undefined) {
+      this.pageSize = event.rows;
+    }
+    this.paginateData();
+  }
+
+  paginateData() {
+    this.paginatedData = this.dataJson.slice(this.first, this.first + this.pageSize);
   }
 }

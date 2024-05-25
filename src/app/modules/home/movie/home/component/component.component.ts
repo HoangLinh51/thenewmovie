@@ -10,6 +10,7 @@ export class ComponentComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() listMovie:any
   @Input() list!: string
+  @Input() category!: string
     
   imgUrl : string = '';
   ngOnInit(){
@@ -17,14 +18,14 @@ export class ComponentComponent {
   }
   scrollLeft() {
     this.listContainer.nativeElement.scrollBy({
-      left: -630,
+      left: -778,
       behavior: 'smooth',
     });
   }
 
   scrollRight() {
     this.listContainer.nativeElement.scrollBy({
-      left: 630,
+      left: 778,
       behavior: 'smooth',
     });
   }

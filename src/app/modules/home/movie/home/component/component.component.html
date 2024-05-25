@@ -12,7 +12,7 @@
 </div>
 <div class="outer-container">
   <div class="list-container" #listContainer>
-    <div class="list-item" *ngFor="let listMovie of listMovie" [routerLink]="['/detail/movie', listMovie.id]">
+    <div class="list-item" *ngFor="let listMovie of listMovie" [routerLink]="['/detail/',category, listMovie.id]">
       <app-item [dataResults]="listMovie" ></app-item>
     </div>
   </div>

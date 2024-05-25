@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild,ElementRef  } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { IMGURL } from 'src/app/constant/localstorage-key';
 
 @Component({
@@ -9,8 +9,9 @@ import { IMGURL } from 'src/app/constant/localstorage-key';
 export class SimiliarComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() similarMovies: any;
+  @Input() category: any
   imgUrl: string = ''
-  
+
   ngOnInit() {
     this.imgUrl = IMGURL
   }

@@ -1,14 +1,11 @@
 <div class="movie-container">
-  <div class="header">
-    <h1>Movie</h1>
+  <div class="title">
+    <h2>Collection</h2>
   </div>
   <div class="movies-grid">
-    <div class="movie-item" *ngFor="let data of dataJson">
-      <img [src]="imgUrl + data.poster_path" alt="{{ data.name }}" />
-      <div class="movie-title">{{ data.name }}</div>
+    <div class="movie-item" *ngFor="let data of paginatedData" >
+      <app-item *ngIf="data.poster_path" [dataResults]="data" [routerLink]="['/detail/collection/', data.id]"></app-item>
     </div>
-  </div>
-  <div class="pagination">
-    <p-paginator (onPageChange)="onPageChange($event)" [first]="0" [rows]="20" [totalRecords]="dataJson.length"/>
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="pageSize" [totalRecords]="dataJson.length" />
   </div>
 </div>

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
-
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
@@ -15,28 +14,23 @@ export class PersonComponent {
   similiar: any;
   isFullText: boolean = false;
   buttonText: string = 'Show More';
-  imgUrl: string= ''
-
+  imgUrl: string = ''
 
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService
-  ) {}
+  ) { }
 
   ngOnInit() {
-    
-  this.imgUrl = IMGURL
+    this.imgUrl = IMGURL
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.getDetail(this.id);
   }
+
   getDetail(id: string) {
     this.movieService.getDetail(id, 'person').subscribe(
       (data) => {
         this.detail = data;
-        console.log('data', data);
-      },
-      (err) => {
-        console.log('err', err);
       }
     );
   }

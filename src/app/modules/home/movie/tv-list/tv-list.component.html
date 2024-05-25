@@ -11,9 +11,9 @@
         <div class="tv-item" *ngFor="let tv of dataResults">
           <app-item [dataResults]="tv"></app-item>
         </div>
-        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
+      <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+        (onPageChange)="onPageChange($event)"></p-paginator>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
@@ -23,9 +23,9 @@
         <div class="tv-item" *ngFor="let tv of dataResults">
           <app-item [dataResults]="tv"></app-item>
         </div>
-        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
+      <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+        (onPageChange)="onPageChange($event)"></p-paginator>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
@@ -35,9 +35,9 @@
         <div class="tv-item" *ngFor="let tv of dataResults">
           <app-item [dataResults]="tv"></app-item>
         </div>
-        <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
+      <p-paginator *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+        (onPageChange)="onPageChange($event)"></p-paginator>
     </p-tabPanel>
     <p-tabPanel>
       <ng-template pTemplate="header">
@@ -47,9 +47,9 @@
         <div class="tv-item" *ngFor="let tv of dataResults">
           <app-item [dataResults]="tv"></app-item>
         </div>
-        <p-paginator class="" *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
-          (onPageChange)="onPageChange($event)"></p-paginator>
       </div>
+      <p-paginator class="" *ngIf="totalPages" [rows]="20" [totalRecords]="totalPages"
+        (onPageChange)="onPageChange($event)"></p-paginator>
     </p-tabPanel>
   </p-tabView>
 </div>

@@ -8,16 +8,16 @@ import { MovieComponent } from './movie/movie.component';
 import { TvComponent } from './tv/tv.component';
 import { SeasonsComponent } from '../../layout/seasons/seasons.component';
 import { PersonComponent } from './person/person.component';
+import { ItemComponent } from 'src/app/layout/item/item.component';
+import { CollectionComponent } from './collection/collection.component';
+import { LayoutModule } from 'src/app/layout/layout.module';
 
 @NgModule({
   declarations: [
     MovieComponent,
-    ReviewsComponent,
-    SimiliarComponent,
     TvComponent,
-    SeasonsComponent,
-    PersonComponent,
+    PersonComponent,CollectionComponent
   ],
-  imports: [CommonModule, DetailRoutingModule, ShareModule],
+  imports: [CommonModule, DetailRoutingModule, ShareModule, LayoutModule],
 })
 export class DetailModule {}

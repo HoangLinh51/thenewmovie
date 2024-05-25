@@ -17,11 +17,11 @@ export class MovieComponent {
   buttonText: string = 'Show More';
 
   imgUrl: string = ''
-  
+
   constructor(
     private route: ActivatedRoute,
     private movieService: MovieService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id') || '';
@@ -38,10 +38,6 @@ export class MovieComponent {
     this.movieService.getDetail(id, 'movie').subscribe(
       (data) => {
         this.detail = data;
-        console.log('data', data);
-      },
-      (err) => {
-        console.log('err', err);
       }
     );
   }

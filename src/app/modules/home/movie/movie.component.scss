@@ -21,11 +21,11 @@
     color: #657d9a;
 
     &:active {
-      color: #ffc107;
+      color: #007bff;
     }
 
     &:hover {
-      color: #ffc107;
+      color: #007bff;
     }
   }
 }
@@ -33,7 +33,7 @@
 .movie-detail-container {
   padding: 10px;
   padding-left: 75px;
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
   border-radius: 10px;
   margin: auto;
 }
