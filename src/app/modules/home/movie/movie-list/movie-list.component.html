@@ -8,7 +8,7 @@
         <p class="title" (click)="getListMovie('movie', 'now_playing', 1)">Now Playing</p>
       </ng-template>
       <div class="movies-grid">
-        <div class="movie-item" *ngFor="let movie of dataResults">
+        <div class="movie-item" *ngFor="let movie of dataResults" [routerLink]="['/detail/movie/', movie.id]">
           <app-item [dataResults]="movie"></app-item>
         </div>
       </div>
@@ -20,7 +20,7 @@
         <p class="title" (click)="getListMovie('movie', 'popular', 1)">Popular</p>
       </ng-template>
       <div class="movies-grid">
-        <div class="movie-item" *ngFor="let movie of dataResults">
+        <div class="movie-item" *ngFor="let movie of dataResults" [routerLink]="['/detail/movie/', movie.id]">
           <app-item [dataResults]="movie"></app-item>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <p class="title" (click)="getListMovie('movie', 'top_rated', 1)">Top Rated</p>
       </ng-template>
       <div class="movies-grid">
-        <div class="movie-item" *ngFor="let movie of dataResults">
+        <div class="movie-item" *ngFor="let movie of dataResults" [routerLink]="['/detail/movie/', movie.id]">
           <app-item [dataResults]="movie"></app-item>
         </div>
       </div>
@@ -44,7 +44,7 @@
         <p class="title" (click)="getListMovie('movie', 'upcoming', 1)">Upcoming</p>
       </ng-template>
       <div class="movies-grid">
-        <div class="movie-item" *ngFor="let movie of dataResults">
+        <div class="movie-item" *ngFor="let movie of dataResults" [routerLink]="['/detail/movie/', movie.id]">
           <app-item [dataResults]="movie"></app-item>
         </div>
       </div>

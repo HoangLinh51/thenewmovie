@@ -8,7 +8,7 @@
         <label class="title" (click)="getListMovie('tv', 'airing_today', 1)">Airing Today</label>
       </ng-template>
       <div class="tv-grid">
-        <div class="tv-item" *ngFor="let tv of dataResults">
+        <div class="tv-item" *ngFor="let tv of dataResults" [routerLink]="['/detail/tv/', tv.id]">
           <app-item [dataResults]="tv"></app-item>
         </div>
       </div>
@@ -20,7 +20,7 @@
         <label class="title" (click)="getListMovie('tv', 'on_the_air', 1)">On The Air</label>
       </ng-template>
       <div class="tv-grid">
-        <div class="tv-item" *ngFor="let tv of dataResults">
+        <div class="tv-item" *ngFor="let tv of dataResults" [routerLink]="['/detail/tv/', tv.id]">
           <app-item [dataResults]="tv"></app-item>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <label class="title" (click)="getListMovie('tv', 'popular', 1)">Popular</label>
       </ng-template>
       <div class="tv-grid">
-        <div class="tv-item" *ngFor="let tv of dataResults">
+        <div class="tv-item" *ngFor="let tv of dataResults" [routerLink]="['/detail/tv/', tv.id]">
           <app-item [dataResults]="tv"></app-item>
         </div>
       </div>
@@ -44,7 +44,7 @@
         <label class="title" (click)="getListMovie('tv', 'top_rated', 1)">Top Rated</label>
       </ng-template>
       <div class="tv-grid">
-        <div class="tv-item" *ngFor="let tv of dataResults">
+        <div class="tv-item" *ngFor="let tv of dataResults" [routerLink]="['/detail/tv/', tv.id]">
           <app-item [dataResults]="tv"></app-item>
         </div>
       </div>

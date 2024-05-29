@@ -22,7 +22,7 @@
       border-radius: 20px;
 
       .show-image {
-        width: 100%;
+        width: 98%;
         height: 100%;
         border-radius: 20px;
       }
@@ -74,10 +74,6 @@
             font-size: 14px;
             cursor: pointer;
             transition: background-color 0.3s;
-          }
-
-          &:hover {
-            background-color: #5e82fe;
           }
         }
       }

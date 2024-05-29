@@ -16,7 +16,6 @@ class DataJson {
 export class CollectionsComponent {
   dataJson: DataJson[] = []
   imgUrl: string = ''
-
   paginatedData: any[] = [];
   first: number = 0;
   pageSize: number = 20;
@@ -30,7 +29,7 @@ export class CollectionsComponent {
 
   getCollection() {
     this.movieService.getCollection().subscribe((data) => {
-      this.dataJson = data;
+      this.dataJson = data; this.paginateData();
     });
   }
 

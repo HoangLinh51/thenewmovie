@@ -19,7 +19,7 @@ const routes: Routes = [
     component: MovieComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         pathMatch: 'full',
         component: HomeComponent,
       },

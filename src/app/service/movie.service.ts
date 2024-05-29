@@ -52,7 +52,7 @@ export class MovieService {
       );
   }
 
-  search(category: string, keyword: string, page: number): Observable<any> {
+  search(keyword: string, page: number): Observable<any> {
     const optionsGet = {
       method: 'GET',
       headers: {
@@ -63,7 +63,7 @@ export class MovieService {
     };
     return this.http
       .get<any>(
-        this.apiUrl + `/3/search/${category}?query=${keyword}&page=${page}`,
+        this.apiUrl + `/3/search/multi?query=${keyword}&page=${page}`,
         optionsGet
       )
       .pipe(

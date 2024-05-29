@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IMGURL } from 'src/app/constant/localstorage-key';
 import { MovieService } from 'src/app/service/movie.service';
 
@@ -14,14 +15,14 @@ export class SlideComponent {
   slideInterval: any;
   imgUrl: string = '';
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService,private router: Router) { }
 
   ngOnInit() {
     this.imgUrl = IMGURL
     this.scrollSlide();
     this.fetchTrendingList((results) => {
-      console.log(results)
       this.trendingList = results
+      console.log(results)
     }
     )
   }
@@ -33,17 +34,20 @@ export class SlideComponent {
         callback(list.results);
       });
   }
+  routerNavigate(type: string, id : string) {
+    this.router.navigate(['/detail/', type, id,])
+   }
 
   scrollSlide() {
     setInterval(() => {
       const listContainer = this.listContainer.nativeElement;
       const scrollDistance = listContainer.clientWidth + 20
-  
+
       listContainer.scrollBy({
         left: scrollDistance,
         behavior: 'smooth',
       });
-  
+
       if (listContainer.scrollLeft + scrollDistance >= listContainer.scrollWidth) {
         setTimeout(() => {
           listContainer.scrollTo({
@@ -54,6 +58,6 @@ export class SlideComponent {
       }
     }, 5000);
   }
-  
-  
+
+
 }

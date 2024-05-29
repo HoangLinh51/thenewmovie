@@ -6,6 +6,6 @@
     <div class="movie-item" *ngFor="let data of paginatedData" >
       <app-item *ngIf="data.poster_path" [dataResults]="data" [routerLink]="['/detail/collection/', data.id]"></app-item>
     </div>
-    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="pageSize" [totalRecords]="dataJson.length" />
   </div>
+  <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="pageSize" [totalRecords]="dataJson.length" />
 </div>

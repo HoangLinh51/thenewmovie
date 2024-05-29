@@ -7,7 +7,7 @@
         <span>{{ detail.vote_average }}</span>
       </div>
       <div class="title">
-        <h3>{{ detail.title }}</h3>
+        <h3>{{ detail.original_name }}</h3>
         <div class="actions">
           <button class="watch-btn">watch</button>
           <button class="trailer-btn">trailer</button>
@@ -53,22 +53,12 @@
           quos, quae quas officiis quod nam. Tempora earum cum assumenda!
         </p>
       </p-tabPanel>
-      <p-tabPanel header="Reviews">
-        <div class="review">
-          <div class="content" *ngFor="let review of reviews.results">
-            <app-reviews [review]="review"></app-reviews>
-          </div>
-        </div>
-      </p-tabPanel>
       <p-tabPanel header="Seasion">
         <div class="seasons">
           <div *ngFor="let seasons of detail.seasons">
-            <app-seasons [seasons]="seasons"></app-seasons>
+            <app-seasons [seasons]="seasons"  ></app-seasons>
           </div>
         </div>
-      </p-tabPanel>
-      <p-tabPanel header="Similar">
-        <app-similiar [similarMovies]="similiar" [category]="'tv'"></app-similiar>
       </p-tabPanel>
     </p-tabView>
   </div>

@@ -1,4 +1,5 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { IMGURL } from 'src/app/constant/localstorage-key';
 
 @Component({
@@ -9,8 +10,10 @@ import { IMGURL } from 'src/app/constant/localstorage-key';
 export class SimiliarComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() similarMovies: any;
-  @Input() category: any
+  @Input() category!: string
   imgUrl: string = ''
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.imgUrl = IMGURL
@@ -27,5 +30,11 @@ export class SimiliarComponent {
       left: 720,
       behavior: 'smooth',
     });
+  }
+
+  routerLink(id: string) {
+    this.router.navigate(['/detail/', this.category, id,]).then(() =>
+      window.location.reload()
+    )
   }
 }
