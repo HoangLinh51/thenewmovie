@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMGURL } from 'src/app/constant/localstorage-key';
-import { MovieService } from 'src/app/service/movie.service';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
+import { MovieService } from 'src/app/data/service/movie.service';
 
 @Component({
   selector: 'app-slide',
@@ -22,7 +22,6 @@ export class SlideComponent {
     this.scrollSlide();
     this.fetchTrendingList((results) => {
       this.trendingList = results
-      console.log(results)
     }
     )
   }

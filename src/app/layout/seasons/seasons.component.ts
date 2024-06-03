@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { IMGURL } from 'src/app/constant/localstorage-key';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
 
 @Component({
   selector: 'app-seasons',

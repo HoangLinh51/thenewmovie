@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IMGURL } from '../../constant/localstorage-key'
+import { IMGURL } from '../../data/constant/localstorage-key'
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',

@@ -13,8 +13,8 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OCCASION_KEY } from 'src/app/constant/localstorage-key';
-import { CalendarLocalstorageService } from 'src/app/service/localstorage.service';
+import { OCCASION_KEY } from 'src/app/data/constant/localstorage-key';
+import { StorageService } from 'src/app/data/service/localstorage.service';
 
 interface CustomCalendarEvent extends CalendarEvent<any> {
   host: string;
@@ -71,7 +71,7 @@ export class PageComponent {
   constructor(
     private modal: NgbModal,
     private form: FormBuilder,
-    private calendarLocalstorage: CalendarLocalstorageService
+    private storageService: StorageService
   ) {}
 
   ngOnInit() {
@@ -119,7 +119,7 @@ export class PageComponent {
   addEvent(): void {
     this.visible = true;
     const occasionLocalStorage =
-      this.calendarLocalstorage.getItem(OCCASION_KEY) || [];
+      this.storageService.get(OCCASION_KEY) || [];
     const occasion = this.occasionForm.value;
     const startDate = occasion.start;
     const endDate = occasion.end;
@@ -136,7 +136,7 @@ export class PageComponent {
     }
     occasion.id = occasionLocalStorage.length + 1;
     occasionLocalStorage.push(occasion);
-    this.calendarLocalstorage.saveItem(OCCASION_KEY, occasionLocalStorage);
+    this.storageService.set(OCCASION_KEY, occasionLocalStorage);
     this.visible = false;
     this.loadDataFromLocalstorage();
   }
@@ -160,14 +160,14 @@ export class PageComponent {
         content: newEventData.content || existingEvent.content,
       };
       this.events[eventEditIndex] = updateEvent;
-      this.calendarLocalstorage.saveItem(OCCASION_KEY, this.events);
+      this.storageService.set(OCCASION_KEY, this.events);
       this.loadDataFromLocalstorage();
       this.dialogEdit = false;
     }
   }
 
   loadDataFromLocalstorage() {
-    const storedEvents = this.calendarLocalstorage.getItem(OCCASION_KEY);
+    const storedEvents = this.storageService.get(OCCASION_KEY);
     if (storedEvents) {
       this.events = storedEvents.map((event: any) => ({
         ...event,
@@ -180,7 +180,7 @@ export class PageComponent {
 
   deleteEvent(event: CalendarEvent) {
     this.events = this.events.filter((events) => events !== event);
-    this.calendarLocalstorage.saveItem(OCCASION_KEY, this.events);
+    this.storageService.set(OCCASION_KEY, this.events);
     this.activeDayIsOpen = false;
   }
 

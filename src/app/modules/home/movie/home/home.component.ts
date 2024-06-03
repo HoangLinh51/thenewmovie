@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IMGURL } from 'src/app/constant/localstorage-key';
-import { MovieService } from 'src/app/service/movie.service';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
+import { MovieService } from 'src/app/data/service/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -33,20 +33,9 @@ export class HomeComponent {
       password: ['', Validators.required],
     });
     this.imgUrl = IMGURL
-    this.getAccount();
     this.getList();
   }
-
-  getAccount() {
-    this.movieService.getAccountInfo().subscribe(
-      (data) => {
-        this.accountInfo = data;
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
-  }
+  
   getList() {
     this.fetchMovieList('now_playing', (results) => (this.movieNowPlaying = results));
     this.fetchMovieList('popular', (results) => (this.moviePopular = results));

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IMGURL } from 'src/app/constant/localstorage-key';
-import { MovieService } from 'src/app/service/movie.service';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
+import { MovieService } from 'src/app/data/service/movie.service';
 @Component({
   selector: 'app-tv',
   templateUrl: './tv.component.html',
@@ -29,7 +29,6 @@ export class TvComponent {
     this.movieService.getDetail(id, 'tv').subscribe(
       (data) => {
         this.detail = data;
-        console.log('this.detail', this.detail)
       }
     );
   }

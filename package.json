@@ -18,16 +18,27 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@ng-bootstrap/ng-bootstrap": "^15.1.2",
+    "@ngneat/transloco": "^6.0.4",
+    "@ngrx/effects": "^17.2.0",
+    "@ngrx/store": "^17.2.0",
+    "@types/crypto-js": "^4.2.2",
     "angular-calendar": "^0.31.0",
     "angularx-flatpickr": "^7.3.0",
     "date-fns": "^3.6.0",
     "flatpickr": "^4.6.13",
+    "ngx-permission": "^0.2.1",
+    "ngx-permissions": "^17.1.0",
     "primeicons": "^7.0.0",
     "primeng": "^17.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
+  },
+  "browser": {
+    "crypto": false,
+    "stream": false
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.2.14",

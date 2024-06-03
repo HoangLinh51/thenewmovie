@@ -9,8 +9,8 @@ import { DropdownModule } from 'primeng/dropdown';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { FlatpickrModule } from 'angularx-flatpickr';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
+import { FlatpickrModule } from 'angularx-flatpickr';
 @NgModule({
   declarations: [],
   imports: [
@@ -36,7 +36,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
     TabViewModule,
     DialogModule,
     PaginatorModule,
-    DropdownModule, 
+    DropdownModule,
   ],
 })
 export class ShareModule { }

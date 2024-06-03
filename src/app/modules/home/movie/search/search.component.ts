@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { PaginatorState } from 'primeng/paginator';
-import { IMGURL } from 'src/app/constant/localstorage-key';
-import { MovieService } from 'src/app/service/movie.service';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
+import { MovieService } from 'src/app/data/service/movie.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -38,7 +38,6 @@ export class SearchComponent {
             (data) => {
               this.listSearch = data.results;
               this.totalpage = data.total_pages;
-              console.log('data', data)
             },
             (error) => {
               console.error('Error fetching search results:', error);

@@ -1,0 +1,87 @@
+
+
+<div class="body">
+  <div class="input">
+    <div class="title">
+      <label>Log in</label>
+      <label style="font-size: 16px;">Welcome Back </label>
+    </div>
+    <form class="forminput" [formGroup]="formGroup" (ngSubmit)="login()">
+      <div class="form">
+        <input formControlName="email" type="text" placeholder="Email">
+        <ng-container *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+          <div class="invalid-message" *ngIf="f['email'].errors?.['required']">This email cannot be left blank.</div>
+          <div class="invalid-message" *ngIf="f['email'].errors?.['email']">Invalid email format.</div>
+        </ng-container>
+
+        <input formControlName="password" type="password" placeholder="Password">
+        <ng-container *ngIf="f['password'].invalid && f['password'].touched">
+          <div class="invalid-message" *ngIf="f['password'].errors?.['required']">This password cannot be left blank.
+          </div>
+        </ng-container>
+
+        
+      </div>
+      <div class="button">
+        <div class="left">
+          <button type="submit">Log in</button>
+        </div>
+        <div class="right">
+          <a routerLink="#">Forget Password?</a>
+        </div>
+      </div>
+    </form>
+    <a routerLink="/register">Don’t have an account yet?</a>
+  </div>
+</div>
+
+
+<!-- <form [formGroup]="formGroup" rsForm class="w-full flex flex-col gap-y-[16px]" (ngSubmit)="login()">
+  <div>
+    <app-input-text
+      [label]="'common.email' | transloco"
+      [required]="true"
+      [placeholder]="'common.emailAddress' | transloco"
+      [formControlName]="formKey.EMAIL"
+      rsFormControl
+    ></app-input-text>
+  </div>
+
+  <div>
+    <app-input-text
+      #passwordInput
+      [label]="'common.password' | transloco"
+      [required]="true"
+      [placeholder]="'common.password' | transloco"
+      [formControlName]="formKey.PASSWORD"
+      [iconRight]="['far', 'eye-slash']"
+      [type]="inputTextType.PASSWORD"
+      (iconRightClicked)="toggleEyeIcon(passwordInput)"
+      styleClass="icon-right-pointer"
+      rsFormControl
+    ></app-input-text>
+  </div>
+
+  <p-checkbox
+    [formControlName]="formKey.KEEP_ME_LOGGED_IN"
+    [binary]="true"
+    [label]="t('keepMeLoggedIn')"
+    [attr.aria-label]="t('keepMeLoggedIn')"
+  ></p-checkbox>
+
+  <p class="danger-500" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="flex flex-col gap-[8px] mt-[8px]">
+    <app-button
+      type="submit"
+      styleClass="w-full"
+      [label]="'common.logIn' | transloco"
+      [disabled]="formGroup.invalid"
+    ></app-button>
+    <app-button
+      [label]="'common.forgotPassword' | transloco"
+      styleClass="btn-text w-full"
+      (clicked)="navigateToForgotPasswordPage()"
+    ></app-button>
+  </div>
+</form> -->

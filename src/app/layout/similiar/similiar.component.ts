@@ -1,6 +1,6 @@
 import { Component, Input, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { IMGURL } from 'src/app/constant/localstorage-key';
+import { IMGURL } from 'src/app/data/constant/localstorage-key';
 
 @Component({
   selector: 'app-similiar',

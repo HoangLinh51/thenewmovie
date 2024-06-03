@@ -2,10 +2,17 @@
   <div class="section">
     <div class="account">
       <h4>Account</h4>
-      <div class="auth">
-        <div>Login</div>
-        <div>Signup</div>
-      </div>
+      <ng-container *ngIf="user === null else template">
+        <div class="auth">
+          <a routerLink="/sign-in">Login</a>
+          <a routerLink="/sign-up">Signup</a>
+        </div>
+      </ng-container>
+      <ng-template #template>
+        <div class="auth">
+          <a (click)="logout()">Logout</a>
+        </div>
+      </ng-template>
     </div>
     <div class="sync-box">
       Login to sync to cloud
