@@ -16,6 +16,9 @@ import { SettingsComponent } from './movie/settings/settings.component';
 import { ComponentComponent } from './movie/home/component/component.component';
 import { SlideComponent } from './movie/home/slide/slide.component';
 import { LayoutModule } from 'src/app/layout/layout.module';
+import { SignInComponent } from '../auth/sign-in/sign-in.component';
+import { SignUpComponent } from '../auth/sign-up/sign-up.component';
+import { PageSettingComponent } from './movie/settings/page-setting/page-setting.component';
 @NgModule({
   declarations: [
     PageComponent,
@@ -27,6 +30,9 @@ import { LayoutModule } from 'src/app/layout/layout.module';
     CollectionsComponent,
     SettingsComponent,
     ComponentComponent, SlideComponent,
+    SignInComponent,
+    SignUpComponent,
+    PageSettingComponent
   ],
   imports: [CommonModule, HomeRoutingModule, ShareModule, CalendarModule,LayoutModule],
 })

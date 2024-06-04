@@ -41,7 +41,7 @@ export class SignUpComponent {
         .subscribe({
           next: () => {
             this.toastrService.success('Register Success!', 'Success!');
-            this.router.navigate(['/login'], { relativeTo: this.route });
+            this.router.navigate(['/settings/sign-in'], { relativeTo: this.route });
           },
           error: (error) => {
             console.log('error',error)

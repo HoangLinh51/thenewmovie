@@ -1,120 +1,106 @@
-.image {
-  width: 650px;
-  height: 500px;
-}
-
-.image img {
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-}
-
 .body {
   display: flex;
   align-items: center;
   gap: 30px;
   justify-content: center;
-  margin: 80px 0px;
-}
+  margin: 40px 0px;
 
-.body .input {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  .input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 
-.body .input .forminput {
-  display: flex;
-  flex-direction: column;
-  gap: 30px
-}
+    a {
+      font-family: Poppins;
+      font-size: 15px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 30px;
+      text-decoration: none;
+    }
 
-.body .input .title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-  width: 100%;
-}
+    .forminput {
+      display: flex;
+      flex-direction: column;
+      gap: 30px
+    }
 
-.body .input .title label {
-  color: #FF385C;
-  font-family: Poppins;
-  font-size: 25px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-}
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
 
-.body .input .form {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 30px;
-}
+      label {
+        font-family: Poppins;
+        font-size: 25px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
+      }
+    }
 
-.body .input .form input {
-  color: #3E3E3E;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-  border: none;
-  border-bottom: 1px solid #E6E6E6;
-  outline: none;
-}
+    .form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 30px;
 
-.body .create-acc button {
-  padding: 15px 40px;
-  border-radius: 15px;
-  border: none;
-  background: #FF385C;
-  color: #fff;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  margin: 0px;
-  width: 100%;
-}
+      input {
+        width: 100%;
+        color: #3E3E3E;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px;
+        border: none;
+        border-bottom: 1px solid #E6E6E6;
+        outline: none;
+      }
+    }
 
-.body .login-gmail button {
-  width: 100%;
-  display: flex;
-  justify-items: center;
-  gap: 20px;
-  padding: 15px 40px;
-  border-radius: 15px;
-  border: 1px solid #979797;
-  background-color: #fff;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-}
+    .button {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
 
-.body .login label {
-  color: #3E3E3E;
-  font-family: Poppins;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-  margin: 0px;
-}
+      .create-acc button {
+        padding: 15px 30px;
+        border-radius: 15px;
+        border: none;
+        background: #007bff;
+        color: #fff;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        margin: 0px;
+        width: 100%;
+      }
 
-.body .input a {
-  color: #FF385C;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 30px;
-  text-decoration: none;
+      .login-gmail button {
+        width: 100%;
+        display: flex;
+        justify-items: center;
+        gap: 20px;
+        padding: 15px 30px;
+        border-radius: 15px;
+        border: 1px solid #979797;
+        background-color: #fff;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        align-items: center;
+      }
+    }
+  }
 }
 
 .invalid-message {
@@ -123,14 +109,4 @@
 
 form .ng-invalid.ng-touched {
   border-color: #e66262;
-}
-
-@media only screen and (min-width: 320px) and (max-width: 949px) {
-  .image {
-    display: none;
-  }
-
-  .body .input .form input {
-    width: 300px;
-  }
 }

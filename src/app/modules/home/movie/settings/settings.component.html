@@ -4,8 +4,8 @@
       <h4>Account</h4>
       <ng-container *ngIf="user === null else template">
         <div class="auth">
-          <a routerLink="/sign-in">Login</a>
-          <a routerLink="/sign-up">Signup</a>
+          <a routerLink="sign-in">Login</a>
+          <a routerLink="sign-up">Signup</a>
         </div>
       </ng-container>
       <ng-template #template>
@@ -18,35 +18,5 @@
       Login to sync to cloud
     </div>
   </div>
-
-  <div class="section">
-    <h4>Appearence</h4>
-    <div class="setting">
-      <label for="mode">Mode</label>
-      <select id="mode">
-        <option>Light</option>
-        <option>Dark</option>
-      </select>
-    </div>
-    <div class="setting">
-      <label for="ascent-color">Ascent Color</label>
-      <select id="ascent-color">
-        <option>Gold</option>
-        <option>Silver</option>
-        <option>Bronze</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="section">
-    <h4>App Center</h4>
-    <div class="list">
-      <p>Anime</p>
-      <p>K-Drama</p>
-      <p>Random</p>
-      <p>Download</p>
-      <p>Disclaimer</p>
-      <p>Contact Us</p>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>
