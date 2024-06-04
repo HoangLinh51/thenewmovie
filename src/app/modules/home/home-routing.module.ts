@@ -8,7 +8,7 @@ import { HomeComponent } from './movie/home/home.component';
 import { MovieListComponent } from './movie/movie-list/movie-list.component';
 import { TvListComponent } from './movie/tv-list/tv-list.component';
 import { SearchComponent } from './movie/search/search.component';
-import { AuthGuard } from 'src/app/data/guard/auth.guard';
+// import { AuthGuard } from 'src/app/data/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: '', 
     component: MovieComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       {
         path: '',

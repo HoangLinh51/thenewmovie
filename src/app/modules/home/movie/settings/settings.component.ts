@@ -10,7 +10,7 @@ import { StorageService } from 'src/app/data/service/localstorage.service';
 })
 export class SettingsComponent {
   user: any
-  constructor(private storageService: StorageService, private authServic: AuthService, private router: Router){
+  constructor(private storageService: StorageService, private router: Router){
     this.user = this.storageService.get('user')
   }
 

@@ -3,12 +3,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { httpInterceptorProviders } from './data/interceptor/auth.interceptor';
+import { fakeBackendProvider } from './data/helpers/fake-backend';
+import { ShareModule } from './share/share.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserAnimationsModule, HttpClientModule, AppRoutingModule],
-  providers: [httpInterceptorProviders],
+  imports: [BrowserAnimationsModule, HttpClientModule, AppRoutingModule,ShareModule],
+  providers: [fakeBackendProvider,],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

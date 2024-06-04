@@ -11,6 +11,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [],
   imports: [
@@ -25,7 +26,12 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     TabViewModule,
     DialogModule,
     PaginatorModule,
-    DropdownModule,
+    DropdownModule,    
+    ToastrModule.forRoot({
+      closeButton: true,
+      timeOut: 1500,
+      progressBar: true,
+    }),
   ],
   exports: [
     FormsModule,
@@ -37,6 +43,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     DialogModule,
     PaginatorModule,
     DropdownModule,
+    ToastrModule,
   ],
 })
 export class ShareModule { }

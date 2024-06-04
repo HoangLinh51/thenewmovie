@@ -58,5 +58,8 @@ export class SlideComponent {
     }, 5000);
   }
 
+  watch(type: string, id : string){
+    this.router.navigate(['watch', type, id])
+  }
 
 }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WatchComponent } from './layout/watch/watch.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
     path: '',
     loadChildren: ()=>
       import('./modules/auth/auth.module').then((m) => m.AuthModule)
+  },
+  {
+    path: 'watch/:category/:id',
+    component: WatchComponent
   }
 ];
 

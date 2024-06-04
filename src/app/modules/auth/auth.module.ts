@@ -13,8 +13,8 @@ import { SignUpComponent } from "./sign-up/sign-up.component";
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
     ShareModule,
+    AuthRoutingModule,
   ],
 })
 export class AuthModule { }

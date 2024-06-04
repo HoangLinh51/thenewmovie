@@ -8,7 +8,7 @@
       <div class="show-name">
         <div class="show-title">{{trendingList.original_title || trendingList.original_name}}</div>
         <div class="show-actions">
-          <button class="watch-button"><i class="pi pi-play"></i>watch</button>
+          <button class="watch-button" (click)="watch(trendingList.media_type, trendingList.id)" ><i class="pi pi-play"></i>watch</button>
           <button class="detail-button" (click)="routerNavigate(trendingList.media_type, trendingList.id)">detail</button>
           <i class="pi pi-bookmark"></i>
           <i class="pi pi-share-alt"></i>

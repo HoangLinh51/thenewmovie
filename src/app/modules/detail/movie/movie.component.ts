@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IMGURL } from 'src/app/data/constant/localstorage-key';
 import { MovieService } from 'src/app/data/service/movie.service';
 
@@ -20,7 +20,8 @@ export class MovieComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,6 +39,7 @@ export class MovieComponent {
     this.movieService.getDetail(id, 'movie').subscribe(
       (data) => {
         this.detail = data;
+        console.log(this.detail)
       }
     );
   }
@@ -47,5 +49,8 @@ export class MovieComponent {
       this.similiar = data.similarMovies;
       this.reviews = data.reviews;
     });
+  }
+  watch(){
+    this.router.navigate(['watch', 'movie', this.detail.id])
   }
 }

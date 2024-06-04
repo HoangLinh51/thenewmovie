@@ -1,65 +1,82 @@
-import { CSP_NONCE, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { SingleResponse } from '../modal/http.models';
-import { HttpService } from './http.service';
-import { LoginFormValue, Credentials, ResetPasswordPayload } from '../modal/auth.modal';
-import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
-import { StorageService } from './localstorage.service';
+import { HttpClient } from '@angular/common/http';
+import { IUser } from '../modal/user.modal';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrls = 'https://inte-hrm-auth.nextgig.tech/api/'
+  apiUrl = 'http://localhost:4000';
+  private userSubject: BehaviorSubject<IUser | null>;
+  public user: Observable<IUser | null>;
 
-  constructor(private readonly httpService: HttpService) { }
-
-  intercept(
-    req: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
-    throw new Error('Method not implemented.');
+  constructor(private router: Router, private http: HttpClient) {
+    this.userSubject = new BehaviorSubject(
+      JSON.parse(localStorage.getItem('user')!)
+    );
+    this.user = this.userSubject.asObservable();
   }
 
-  login(payload: LoginFormValue): Observable<Credentials> {
-    return this.httpService.post<SingleResponse<Credentials>>(`${this.apiUrls}tokens`, payload)
-      .pipe(map(({ data }) => data));
+  public get userValue() {
+    return this.userSubject.value;
   }
 
-  refreshToken(payload: Credentials): Observable<Credentials> {
-    return this.httpService
-      .post<SingleResponse<Credentials>>(`${this.apiUrls}tokens/refresh`, payload)
-      .pipe(map(({ data }) => data));
+  login(email: string, password: string) {
+    return this.http
+      .post<IUser>(`${this.apiUrl}/login`, {
+        email,
+        password,
+      })
+      .pipe(
+        map((user) => {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userSubject.next(user);
+          return user;
+        })
+      );
   }
 
-  logout(): Observable<void> {
-    return this.httpService.post<void>(`${this.apiUrls}tokens/logout`, null);
+  logout() {
+    localStorage.removeItem('user');
+    this.userSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
-  getResetLink(email: string): Observable<void> {
-    return this.httpService.post<void>(`${this.apiUrls}tokens/forgot-password`, { email });
+  register(user: IUser) {
+    return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  resetPassword(payload: ResetPasswordPayload): Observable<void> {
-    return this.httpService.post<void>(`${this.apiUrls}users/reset-password`, payload);
+  getAll() {
+    return this.http.get<IUser[]>(`${this.apiUrl}/users`);
   }
 
-  getPermissions(): Observable<string[]> {
-    return this.httpService.get(`${this.apiUrls}personal/permissions`);
+  getById(id: string) {
+    return this.http.get<IUser>(`${this.apiUrl}/users/${id}`);
   }
 
-  checkResetPasswordToken(payload: { passwordResetToken: string; email: string }): Observable<boolean> {
-    return this.httpService
-      .post<SingleResponse<boolean>>(`${this.apiUrls}users/reset-password/check-token`, payload)
-      .pipe(map(({ data }) => data));
+  update(id: number, params: any) {
+    return this.http.put(`${this.apiUrl}/users/${id}`, params).pipe(
+      map((x) => {
+        if (id == this.userValue?.id) {
+          const user = { ...this.userValue, ...params };
+          localStorage.setItem('user', JSON.stringify(user));
+          this.userSubject.next(user);
+        }
+        return x;
+      })
+    );
   }
 
-  // destroyWhenUnauthorized() {
-  //   return (source: Observable<any>) => {
-  //     return source.pipe(
-  //       takeUntil(this.actions$.pipe(ofType(authActions.logoutSuccess))),
-  //       takeUntil(this.actions$.pipe(ofType(authActions.sessionExpired)))
-  //     );
-  //   };
-  // }
+  delete(id: number) {
+    return this.http.delete(`${this.apiUrl}/users/${id}`).pipe(
+      map((x) => {
+        if (id == this.userValue?.id) {
+          this.logout();
+        }
+        return x;
+      })
+    );
+  }
 }

@@ -6,7 +6,7 @@
       <label>Log in</label>
       <label style="font-size: 16px;">Welcome Back </label>
     </div>
-    <form class="forminput" [formGroup]="formGroup" (ngSubmit)="login()">
+    <form class="forminput" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form">
         <input formControlName="email" type="text" placeholder="Email">
         <ng-container *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
@@ -34,54 +34,3 @@
     <a routerLink="/register">Don’t have an account yet?</a>
   </div>
 </div>
-
-
-<!-- <form [formGroup]="formGroup" rsForm class="w-full flex flex-col gap-y-[16px]" (ngSubmit)="login()">
-  <div>
-    <app-input-text
-      [label]="'common.email' | transloco"
-      [required]="true"
-      [placeholder]="'common.emailAddress' | transloco"
-      [formControlName]="formKey.EMAIL"
-      rsFormControl
-    ></app-input-text>
-  </div>
-
-  <div>
-    <app-input-text
-      #passwordInput
-      [label]="'common.password' | transloco"
-      [required]="true"
-      [placeholder]="'common.password' | transloco"
-      [formControlName]="formKey.PASSWORD"
-      [iconRight]="['far', 'eye-slash']"
-      [type]="inputTextType.PASSWORD"
-      (iconRightClicked)="toggleEyeIcon(passwordInput)"
-      styleClass="icon-right-pointer"
-      rsFormControl
-    ></app-input-text>
-  </div>
-
-  <p-checkbox
-    [formControlName]="formKey.KEEP_ME_LOGGED_IN"
-    [binary]="true"
-    [label]="t('keepMeLoggedIn')"
-    [attr.aria-label]="t('keepMeLoggedIn')"
-  ></p-checkbox>
-
-  <p class="danger-500" *ngIf="errorMessage">{{ errorMessage }}</p>
-
-  <div class="flex flex-col gap-[8px] mt-[8px]">
-    <app-button
-      type="submit"
-      styleClass="w-full"
-      [label]="'common.logIn' | transloco"
-      [disabled]="formGroup.invalid"
-    ></app-button>
-    <app-button
-      [label]="'common.forgotPassword' | transloco"
-      styleClass="btn-text w-full"
-      (clicked)="navigateToForgotPasswordPage()"
-    ></app-button>
-  </div>
-</form> -->
