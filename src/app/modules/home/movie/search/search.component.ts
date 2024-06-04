@@ -14,6 +14,7 @@ export class SearchComponent {
   listSearch: any;
   totalpage!: number
   paginatedData: any
+  trendingSearch: any
 
   first: number = 0;
   pageSize: number = 20;
@@ -26,6 +27,7 @@ export class SearchComponent {
       query: ['', Validators.required],
     });
     this.imgUrl = IMGURL
+    this.getTrendingSearch()
   }
 
   onSearch(): void {
@@ -56,5 +58,16 @@ export class SearchComponent {
           this.listSearch = data.results;
         });
     }
+  }
+
+  getTrendingSearch() {
+    this.movieService.getTrending('day').subscribe(
+      (data) => {
+        this.trendingSearch = data.results;
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    );
   }
 }

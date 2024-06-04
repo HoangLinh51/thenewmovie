@@ -28,7 +28,7 @@ export class SlideComponent {
 
   fetchTrendingList(callback: (results: any) => void) {
     this.movieService
-      .getTrending()
+      .getTrending('week')
       .subscribe((list) => {
         callback(list.results);
       });

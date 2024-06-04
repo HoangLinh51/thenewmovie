@@ -20,8 +20,7 @@ export class MovieService {
       }
     };
     return this.http
-      .get<any>(
-        this.apiUrl + `/3/${category}/${list}?page=${page}`,
+      .get<any>(`${this.apiUrl}/3/${category}/${list}?page=${page}`,
         optionsGet
       )
       .pipe(
@@ -43,8 +42,7 @@ export class MovieService {
       },
     };
     return this.http
-      .get<any>(
-        this.apiUrl + `/3/search/multi?query=${keyword}&page=${page}`,
+      .get<any>(`${this.apiUrl}/3/search/multi?query=${keyword}&page=${page}`,
         optionsGet
       )
       .pipe(
@@ -55,7 +53,7 @@ export class MovieService {
         })
       );
   }
-  
+
   getDetail(id: string, category: string) {
     const options = {
       method: 'GET',
@@ -65,7 +63,7 @@ export class MovieService {
           'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA',
       },
     };
-    return this.http.get<any>(this.apiUrl + '/3/' + category + '/' + id, options).pipe(
+    return this.http.get<any>(`${this.apiUrl}/3/${category}/${id}`, options).pipe(
       map((response) => response),
       catchError((error) => {
         console.error('Error:', error);
@@ -113,26 +111,22 @@ export class MovieService {
     return this.http.get<any>(this.jsonUrl);
   }
 
-  getTrending(){
-      const optionsGet = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA'
-        }
-      };
-      return this.http
-        .get<any>(
-          this.apiUrl + `/3/trending/all/week`,
-          optionsGet
-        )
-        .pipe(
-          map((response) => response),
-          catchError((error) => {
-            console.error('Error:', error);
-            throw error;
-          })
-        );
-  
+  getTrending(time: string) {
+    const optionsGet = {
+      method: 'GET',
+      headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmNmY5YmFkNmVkNWM3MmU2MGU3YjAzNGE3ZWMyYjdhMyIsInN1YiI6IjY2MjI1OGZhZTY0MGQ2MDE2M2MzODc2MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Sn8k6hZE8fkqHpnIZ38vltqBs9B7AcSdhl4HaKp0NuA'
+      }
+    };
+    return this.http
+      .get<any>(`${this.apiUrl}/3/trending/all/${time}`, optionsGet)
+      .pipe(
+        map((response) => response),
+        catchError((error) => {
+          console.error('Error:', error);
+          throw error;
+        })
+      );
   }
 }
