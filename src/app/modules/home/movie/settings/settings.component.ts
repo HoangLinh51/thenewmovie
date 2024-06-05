@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/data/service/auth.service';
 import { StorageService } from 'src/app/data/service/localstorage.service';
 
@@ -10,16 +9,12 @@ import { StorageService } from 'src/app/data/service/localstorage.service';
 })
 export class SettingsComponent {
   user: any
-  constructor(private storageService: StorageService, private router: Router){
+  constructor(private storageService: StorageService,private authService: AuthService){
     this.user = this.storageService.get('user')
   }
 
   logout(){
-    this.storageService.remove('user')
-    this.storageService.remove('credentials')
-    this.router.navigate(['/sign-in']).then(()=>
-      window.location.reload()
-    )
+    this.authService.logout()
   }
 }
 ``

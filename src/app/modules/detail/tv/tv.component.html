@@ -10,7 +10,7 @@
         <h3>{{ detail.original_name }}</h3>
         <div class="actions">
           <button class="watch-btn" (click)="watch()">watch</button>
-          <button class="trailer-btn">trailer</button>
+          <a class="trailer-btn" [href]="detail.homepage">Home Page</a>
         </div>
       </div>
     </div>

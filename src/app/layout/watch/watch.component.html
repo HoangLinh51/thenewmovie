@@ -1,5 +1,5 @@
 <div class="video-container" *ngIf="srcWatch else template">
-  <iframe [src]="srcWatch" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  <iframe [src]="srcWatch" width="560" height="315" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 <ng-template #template>
   <p>watch works!</p>

@@ -1,4 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IMGURL } from 'src/app/data/constant/localstorage-key';
 
 @Component({
@@ -10,7 +11,9 @@ export class SeasonsComponent {
   @ViewChild('listContainer', { static: true }) listContainer!: ElementRef;
   @Input() seasons: any;
   imgUrl: string = ''
-  
+
+  constructor(private router: Router) { }
+
   ngOnInit() {
     this.imgUrl = IMGURL
   }
@@ -27,5 +30,9 @@ export class SeasonsComponent {
       left: 720,
       behavior: 'smooth',
     });
+  }
+
+  reloadPage(id: string) {
+    this.router.navigate(['/detail/tv', id]).then(() => window.location.reload())
   }
 }

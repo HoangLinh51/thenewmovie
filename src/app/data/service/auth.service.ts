@@ -41,7 +41,7 @@ export class AuthService {
   logout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/login']);
+    this.router.navigate(['/settings/sign-in']).then(() => window.location.reload())
   }
 
   register(user: IUser) {
