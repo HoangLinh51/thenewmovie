@@ -21,16 +21,16 @@ export class SignUpComponent {
     private router: Router,
     private AuthService: AuthService,
     private toastrService: ToastrService
-  ) {}
+  ) { }
 
-  ngOnInit() {this.initForm()
+  ngOnInit() {
+    this.initForm()
   }
 
   get f() {
     return this.form.controls;
   }
 
-  
   onSubmit() {
     this.submitted = true;
 
@@ -44,7 +44,7 @@ export class SignUpComponent {
             this.router.navigate(['/settings/sign-in'], { relativeTo: this.route });
           },
           error: (error) => {
-            console.log('error',error)
+            console.log('error', error)
             this.toastrService.error(error, 'Error!');
             this.loading = false;
           },
@@ -63,7 +63,6 @@ export class SignUpComponent {
       return isValid ? null : { invalidPhoneNumber: true };
     };
   }
-
 
   private initForm(): void {
     this.form = this.formBuilder.group({

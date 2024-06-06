@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMGURL } from 'src/app/data/constant/localstorage-key';
 import { MovieService } from 'src/app/data/service/movie.service';

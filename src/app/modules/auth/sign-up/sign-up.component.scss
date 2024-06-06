@@ -110,3 +110,10 @@
 form .ng-invalid.ng-touched {
   border-color: #e66262;
 }
+
+@media screen and (max-width: 769px) {
+  .button{
+    display: flex;
+    flex-direction: column;
+  }
+}

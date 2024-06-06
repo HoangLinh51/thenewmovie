@@ -39,7 +39,6 @@ export class MovieComponent {
     this.movieService.getDetail(id, 'movie').subscribe(
       (data) => {
         this.detail = data;
-        console.log(this.detail)
       }
     );
   }

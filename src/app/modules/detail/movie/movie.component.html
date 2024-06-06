@@ -4,7 +4,7 @@
     <div class="movie-poster">
       <img [src]="imgUrl + detail.poster_path" class="poster-image" />
       <div class="rating">
-        <span>{{ detail.vote_average }}</span>
+        <span>{{ detail.vote_average | number:'1.0-1'}}</span>
       </div>
       <div class="title">
         <h3>{{ detail.title }}</h3>

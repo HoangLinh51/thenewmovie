@@ -13,8 +13,8 @@ import {
   CalendarView,
 } from 'angular-calendar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { OCCASION_KEY } from 'src/app/data/constant/localstorage-key';
 import { StorageService } from 'src/app/data/service/localstorage.service';
+import { OCCASION_KEY } from 'src/app/data/constant/localstorage-key';
 
 interface CustomCalendarEvent extends CalendarEvent<any> {
   host: string;

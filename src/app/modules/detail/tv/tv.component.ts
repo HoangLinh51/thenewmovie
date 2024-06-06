@@ -29,7 +29,6 @@ export class TvComponent {
     this.movieService.getDetail(id, 'tv').subscribe(
       (data) => {
         this.detail = data;
-        console.log(this.detail)
       }
     );
   }

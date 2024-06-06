@@ -11,7 +11,6 @@ import { SearchComponent } from './movie/search/search.component';
 import { SignInComponent } from '../auth/sign-in/sign-in.component';
 import { SignUpComponent } from '../auth/sign-up/sign-up.component';
 import { PageSettingComponent } from './movie/settings/page-setting/page-setting.component';
-// import { AuthGuard } from 'src/app/data/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +20,6 @@ const routes: Routes = [
   {
     path: '', 
     component: MovieComponent,
-    // canActivate: [AuthGuard],
     children: [
       {
         path: '',
