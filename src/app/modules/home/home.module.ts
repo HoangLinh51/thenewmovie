@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { ShareModule } from 'src/app/share/share.module';
 import { HomeRoutingModule } from './home-routing.module';
 import { MovieComponent } from './movie/movie.component';
-import { PageComponent } from './page/page.component';
 
 import { CalendarModule } from 'primeng/calendar';
 import { TvListComponent } from './movie/tv-list/tv-list.component';
@@ -21,7 +20,6 @@ import { SignUpComponent } from '../auth/sign-up/sign-up.component';
 import { PageSettingComponent } from './movie/settings/page-setting/page-setting.component';
 @NgModule({
   declarations: [
-    PageComponent,
     MovieComponent,
     TvListComponent,
     MovieListComponent,
@@ -29,11 +27,18 @@ import { PageSettingComponent } from './movie/settings/page-setting/page-setting
     HomeComponent,
     CollectionsComponent,
     SettingsComponent,
-    ComponentComponent, SlideComponent,
+    ComponentComponent,
+    SlideComponent,
     SignInComponent,
     SignUpComponent,
-    PageSettingComponent
+    PageSettingComponent,
   ],
-  imports: [CommonModule, HomeRoutingModule, ShareModule, CalendarModule,LayoutModule],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    ShareModule,
+    CalendarModule,
+    LayoutModule,
+  ],
 })
-export class HomeModule { }
+export class HomeModule {}

@@ -1,18 +1,14 @@
-.text-container {
+.text {
   position: relative;
   max-width: 100%;
-}
-
-.truncate-text {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -webkit-line-clamp: 3;
-  transition: max-height 0.3s ease;
-  max-height: 45px;
-}
-
-a {
-  cursor: pointer;
+  
+  &-truncate {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    transition: max-height 0.3s ease;
+    max-height: 45px;
+  }
 }

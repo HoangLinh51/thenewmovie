@@ -1,48 +1,33 @@
 .body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 30px;
-  justify-content: center;
-  margin: 40px 0px;
+  margin: 40px auto;
+  width: 400px;
 
-  .input {
+  &-title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    width: 100%;
 
-    a {
-      font-family: Poppins;
-      font-size: 15px;
+    label {
+      font-family: Poppins, sans-serif;
+      font-size: 25px;
       font-style: normal;
       font-weight: 500;
       line-height: 30px;
-      text-decoration: none;
     }
+  }
 
-    .forminput {
-      display: flex;
-      flex-direction: column;
-      gap: 30px
-    }
+  &-forminput {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 
-    .title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      width: 100%;
-
-      label {
-        font-family: Poppins;
-        font-size: 25px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 30px;
-      }
-    }
-
-    .form {
+    &-form {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -51,7 +36,7 @@
       input {
         width: 100%;
         color: #3E3E3E;
-        font-family: Poppins;
+        font-family: Poppins, sans-serif;
         font-size: 16px;
         font-style: normal;
         font-weight: 500;
@@ -60,59 +45,53 @@
         border-bottom: 1px solid #E6E6E6;
         outline: none;
       }
+
+      .invalid-message {
+        color: red;
+      }
+
+      .ng-invalid.ng-touched {
+        border-color: #e66262;
+      }
     }
 
-    .button {
+    &-button {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 20px;
 
-      .create-acc button {
-        padding: 15px 30px;
+      button {
+        padding: 10px 20px;
         border-radius: 15px;
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+        height: 47px;
+      }
+
+      .create-acc {
         border: none;
         background: #007bff;
         color: #fff;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
         margin: 0px;
-        width: 100%;
       }
 
-      .login-gmail button {
-        width: 100%;
+      .login-gmail {
         display: flex;
-        justify-items: center;
-        gap: 20px;
-        padding: 15px 30px;
-        border-radius: 15px;
+        gap: 5px;
         border: 1px solid #979797;
         background-color: #fff;
-        font-family: Poppins;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: normal;
         align-items: center;
       }
     }
   }
 }
 
-.invalid-message {
-  color: red;
-}
-
-form .ng-invalid.ng-touched {
-  border-color: #e66262;
-}
-
 @media screen and (max-width: 769px) {
-  .button{
+  .body-forminput-button {
     display: flex;
     flex-direction: column;
   }

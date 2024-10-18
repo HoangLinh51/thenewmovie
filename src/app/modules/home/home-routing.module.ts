@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MovieComponent } from './movie/movie.component';
-import { PageComponent } from './page/page.component';
 import { CollectionsComponent } from './movie/collections/collections.component';
 import { SettingsComponent } from './movie/settings/settings.component';
 import { HomeComponent } from './movie/home/home.component';
@@ -14,11 +13,7 @@ import { PageSettingComponent } from './movie/settings/page-setting/page-setting
 
 const routes: Routes = [
   {
-    path: 'calendar',
-    component: PageComponent,
-  },
-  {
-    path: '', 
+    path: '',
     component: MovieComponent,
     children: [
       {
@@ -45,22 +40,22 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent,
-        children: [          
+        children: [
           {
             path: '',
-            component: PageSettingComponent
+            component: PageSettingComponent,
           },
           {
             path: 'sign-in',
-            component: SignInComponent
+            component: SignInComponent,
           },
           {
             path: 'sign-up',
-            component: SignUpComponent
-          }
-        ]
+            component: SignUpComponent,
+          },
+        ],
       },
-    ]
+    ],
   },
 ];
 

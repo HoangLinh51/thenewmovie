@@ -1,16 +1,17 @@
-<div class="movie-detail-container">
-  <div class="movie-banner">
-    <img [src]="imgUrl + detail.backdrop_path" class="banner-image" />
-    <div class="movie-poster">
-      <img [src]="imgUrl + detail.poster_path" class="poster-image" />
+<div class="container">
+  <div class="container-banner">
+    <img [src]="imgUrl + detail.backdrop_path" class="container-banner-image" />
+    <div class="container-banner-poster">
+      <img [src]="imgUrl + detail.poster_path" class="image" />
       <div class="rating">
         <span>{{ detail.vote_average | number:'1.0-1'}}</span>
       </div>
       <div class="title">
-        <h3>{{ detail.title }}</h3>
-        <div class="actions">
-          <button class="watch-btn" (click)="watch()">watch</button>
-          <a class="trailer-btn" [href]="detail.homepage">Home Page</a>
+        <div class="title-name">{{detail.original_title || detail.original_name}}</div>
+        <div class="title-actions">
+          <button class="title-actions-btn" (click)="watch()"><i class="pi pi-play"></i>watch</button>
+          <i class="pi pi-bookmark"></i>
+          <i class="pi pi-share-alt"></i>
         </div>
       </div>
     </div>

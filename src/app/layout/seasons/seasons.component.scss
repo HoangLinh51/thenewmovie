@@ -1,4 +1,4 @@
-.seasons-item {
+.item {
   width: 700px;
   display: flex;
   align-items: flex-start;
@@ -8,27 +8,27 @@
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
-  .seasons-poster {
+  &-poster {
     width: 100px;
     height: 150px;
     object-fit: cover;
   }
 
-  .seasons-details {
+  &-details {
     padding: 10px;
 
-    .seasons-title {
+    &-title {
       font-size: 18px;
       margin: 0;
     }
 
-    .seasons-info {
+    &-info {
       font-size: 16px;
       color: #657d9a;
       margin: 5px 0;
     }
 
-    .seasons-genres {
+    &-genres {
       font-size: 16px;
       color: #657d9a;
       margin: 0;
@@ -37,7 +37,7 @@
 }
 
 @media screen and (max-width:769px) {
-  .seasons-item {
+  .item {
     width: 100%;
   }
 }

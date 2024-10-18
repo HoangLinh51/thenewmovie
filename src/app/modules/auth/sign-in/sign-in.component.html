@@ -1,35 +1,25 @@
-
-
 <div class="body">
-  <div class="input">
-    <div class="title">
-      <label>Log in</label>
-      <label style="font-size: 16px;">Welcome Back </label>
-    </div>
-    <form class="forminput" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form">
-        <input formControlName="email" type="text" placeholder="Email">
-        <ng-container *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
-          <div class="invalid-message" *ngIf="f['email'].errors?.['required']">This email cannot be left blank.</div>
-          <div class="invalid-message" *ngIf="f['email'].errors?.['email']">Invalid email format.</div>
-        </ng-container>
-
-        <input formControlName="password" type="password" placeholder="Password">
-        <ng-container *ngIf="f['password'].invalid && f['password'].touched">
-          <div class="invalid-message" *ngIf="f['password'].errors?.['required']">This password cannot be left blank.
-          </div>
-        </ng-container>
-
-        
-      </div>
-      <div class="button">
-        <div class="left">
-          <button type="submit">Log in</button>
-        </div>
-        <div class="right">
-          <a routerLink="#">Forget Password?</a>
-        </div>
-      </div>
-    </form>
+  <div class="body-title">
+    <label>Log in</label>
+    <label style="font-size: 16px;">Welcome Back </label>
   </div>
+  <form class="body-forminput" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="body-forminput-form">
+      <input formControlName="email" type="text" placeholder="Email">
+      <ng-container *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+        <div class="invalid-message" *ngIf="f['email'].errors?.['required']">This email cannot be left blank.</div>
+        <div class="invalid-message" *ngIf="f['email'].errors?.['email']">Invalid email format.</div>
+      </ng-container>
+
+      <input formControlName="password" type="password" placeholder="Password">
+      <ng-container *ngIf="f['password'].invalid && f['password'].touched">
+        <div class="invalid-message" *ngIf="f['password'].errors?.['required']">This password cannot be left blank.
+        </div>
+      </ng-container>
+    </div>
+    <div class="body-forminput-button">
+      <button class="left" type="submit">Log in</button>
+      <button class="right" routerLink="/">Forget Password?</button>
+    </div>
+  </form>
 </div>

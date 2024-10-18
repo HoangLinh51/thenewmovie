@@ -1,13 +1,13 @@
-<div class="seasons-item" (click)="reloadPage(seasons.id)" >
-  <img [src]="imgUrl + seasons.poster_path" alt="{{ seasons.name }}" class="seasons-poster" />
-  <div class="seasons-details">
-    <h2 class="seasons-title">{{ seasons.name }}</h2>
-    <p class="seasons-info">
+<div class="item" (click)="reloadPage(seasons.id)">
+  <img [src]="imgUrl + seasons.poster_path" alt="{{ seasons.name }}" class="item-poster" />
+  <div class="item-details">
+    <h2 class="item-details-title">{{ seasons.name }}</h2>
+    <p class="item-details-info">
       Movie Rate: {{ seasons.vote_average }}
     </p>
-    <p class="seasons-info">
+    <p class="item-details-info">
       Air date: {{ seasons.air_date }}
     </p>
-    <p class="seasons-genres"> Episode count: {{ seasons.episode_count }}</p>
+    <p class="item-details-genres"> Episode count: {{ seasons.episode_count }}</p>
   </div>
 </div>

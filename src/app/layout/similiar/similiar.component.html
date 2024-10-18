@@ -1,15 +1,15 @@
 <div class="similar">
-  <div class="container-item" #listContainer>
-    <div class="list-item" *ngFor="let similar of similarMovies.results" (click)="routerLink(similar.id)">
-      <img [src]="imgUrl + similar.poster_path" alt="{{ similar.title }}" />
-      <p>{{ similar.title }} {{similar.original_name}}</p>
-    </div>
-  </div>
-  <div class="swipe">
+  <div class="similar-swipe">
     <button (click)="scrollLeft()" data-tooltip-content="Swipe Left"><i class="fa-solid fa-chevron-left"></i>
     </button>
     Swipe
     <button (click)="scrollRight()" data-tooltip-content="Swipe Right"><i class="fa-solid fa-chevron-right"></i>
     </button>
+  </div>
+  <div class="similar-list" #listContainer>
+    <div class="similar-list-item" *ngFor="let similar of similarMovies.results" (click)="routerLink(similar.id)">
+      <img [src]="imgUrl + similar.poster_path" alt="{{ similar.title }}" />
+      <p>{{ similar.title }} {{similar.original_name}}</p>
+    </div>
   </div>
 </div>

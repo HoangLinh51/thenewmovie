@@ -5,16 +5,18 @@ import { StorageService } from 'src/app/data/service/localstorage.service';
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent {
-  user: any
-  constructor(private storageService: StorageService,private authService: AuthService){
-    this.user = this.storageService.get('user')
+  user: any;
+  constructor(
+    private storageService: StorageService,
+    private authService: AuthService
+  ) {
+    this.user = this.storageService.get('user');
   }
 
-  logout(){
-    this.authService.logout()
+  logout() {
+    this.authService.logout();
   }
 }
-``

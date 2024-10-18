@@ -1,10 +1,9 @@
-
-  <p>
-    <strong>{{ review.author }} --- {{ review.created_at | date }}</strong>
+<p>
+  <strong>{{ review.author }} --- {{ review.created_at | date }}</strong>
+</p>
+<div class="text">
+  <p class="text-truncate" [class.full-text]="isFullText" id="text">
+    {{ review.content }}
   </p>
-  <div class="text-container">
-    <p class="truncate-text" [class.full-text]="isFullText" id="text">
-      {{ review.content }}
-    </p>
-    <a (click)="toggleText()">{{ buttonText }}</a>
-  </div>
+  <a (click)="toggleText()">{{ buttonText }}</a>
+</div>
